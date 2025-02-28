@@ -10,7 +10,22 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...compat.extends(
+    "next/core-web-vitals",
+    "next/typescript",
+    "plugin:react-hooks/recommended",
+    "plugin:tailwindcss/recommended"
+  ),
+  ...compat.plugins("react-hooks", "tailwindcss"),
+  {
+    rules: {
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "tailwindcss/classnames-order": "off",
+    },
+  },
 ];
 
 export default eslintConfig;
