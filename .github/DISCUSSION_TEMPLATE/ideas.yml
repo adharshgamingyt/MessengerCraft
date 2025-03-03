@@ -15,16 +15,15 @@ body:
     validations:
       required: true
 
-  - type: checkboxes
+  - type: dropdown
     attributes:
-      label: priority
-      description: how much priority would you like to give to this feature
+      label: Priority
+      description: How much priority would you like to give to this feature?
       options:
-        - label: 1 ⭐
-        - label: 2 ⭐
-        - label: 3 ⭐
-        - label: 4 ⭐
-        - label: 5 ⭐
-      allowMultiple: false
+        - 1 ⭐
+        - 2 ⭐
+        - 3 ⭐
+        - 4 ⭐
+        - 5 ⭐
     validations:
       required: true
