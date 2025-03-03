@@ -6,3 +6,22 @@ body:
       placeholder: This feature will make the app user more friendly
     validations:
       required: true
+
+  - type: textarea
+    attributes:
+      label: benefits for others [for advance and normal users]
+      description: Describe the benefits of the feature for the users
+      placeholder: This feature will be used by advance and normal people's like ...
+    validations:
+      required: true
+
+  - type: checkboxes
+    attributes:
+      label: priority
+      description: how much priority would you like to give to this feature
+      options:
+        - label: 1 ⭐
+        - label: 2 ⭐
+        - label: 3 ⭐
+        - label: 4 ⭐
+        - label: 5 ⭐
