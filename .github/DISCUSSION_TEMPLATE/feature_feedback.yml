@@ -1,0 +1,8 @@
+name: Feature request with feedback of the community
+description: Request a new feature with feedback from the community.
+type: request
+body:
+  - type: markdown
+    attributes:
+      values:
+        # Feature request needs feedback from the community
