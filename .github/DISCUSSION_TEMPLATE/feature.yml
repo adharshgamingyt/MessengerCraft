@@ -1,5 +1,4 @@
 body:
   - type: markdown
     attributes:
-      values:
-        # Feature request needs feedback from the community
+      values: Feature request needs feedback from the community
