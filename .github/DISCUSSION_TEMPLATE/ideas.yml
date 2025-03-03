@@ -4,5 +4,5 @@ body:
       label: information
       description: Describe the feature you'd like to see in the app with long term
       placeholder: This feature will make the app user more friendly
-      validations:
-        required: true
+    validations:
+      required: true
