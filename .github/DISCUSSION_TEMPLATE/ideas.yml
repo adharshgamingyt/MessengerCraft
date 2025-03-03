@@ -1,5 +1,5 @@
 body:
-  - type: input
+  - type: textarea
     attributes:
       label: information
       description: Describe the feature you'd like to see in the app with long term
