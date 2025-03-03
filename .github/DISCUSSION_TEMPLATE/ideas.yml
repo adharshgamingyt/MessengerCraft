@@ -25,3 +25,6 @@ body:
         - label: 3 ⭐
         - label: 4 ⭐
         - label: 5 ⭐
+    validations:
+      allow_multiple: false
+      required: true
