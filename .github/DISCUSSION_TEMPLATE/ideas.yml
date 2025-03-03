@@ -1,0 +1,13 @@
+body:
+  - type: markdown
+    attributes:
+      values:
+        - Feature request needs feedback from the community
+
+  - type: input
+    attributes:
+      label: Title
+      description: A clear and concise title for the feature request
+      placeholder: Cool new idea i want in the app
+      validations:
+      required: true
