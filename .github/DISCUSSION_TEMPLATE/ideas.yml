@@ -27,3 +27,11 @@ body:
         - 5 ⭐
     validations:
       required: true
+
+  - type: textarea
+    attributes:
+      label: edit
+      description: If you need to edit then type here don't edit it.
+      placeholder: "[1/1/2025]I want to change where the part is shown is not what i meant because..."
+    validations:
+      required: false
