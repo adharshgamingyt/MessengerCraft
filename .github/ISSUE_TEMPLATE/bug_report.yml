@@ -1,5 +1,5 @@
 name: Report an issue
-description: Report a Next.js issue.
+description: Report a MessengerCraft issue.
 type: Bug
 body:
   - type: markdown
