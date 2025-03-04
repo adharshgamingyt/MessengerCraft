@@ -1,7 +1,5 @@
 name: Feature request
 description: Suggest a new feature or improvement for MessengerCraft.
-type: Feature
-
 body:
   - type: markdown
     attributes:
