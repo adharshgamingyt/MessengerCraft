@@ -1,5 +1,11 @@
-import Image from "next/image";
+import React from "react";
 
-export default function Home() {
-  return <div>hlo world</div>;
-}
+const HomePage = () => {
+  return (
+    <div className="bg-p1 flex h-full w-full">
+      <div className="text-s2">hlo</div>
+    </div>
+  );
+};
+
+export default HomePage;
