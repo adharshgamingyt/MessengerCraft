@@ -4,6 +4,7 @@ import { Poppins, Ubuntu } from "next/font/google";
 
 import "./globals.css";
 import { siteConfig } from "@/config/siteconfig";
+import { Navbar } from "@/components/my ui/Home/navbar";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  icons: [{ url: "/logo.ico", href: "/logo.ico" }],
+  icons: [{ url: "/logo-no-bg.png", href: "/logo-no-bg.png" }],
   authors: [
     {
       name: "Adharsh",
@@ -40,9 +41,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${ubuntu.variable} ${ubuntu.className} ${poppins.variable} ${poppins.className} font-poppins bg-primary-background antialiased`}
+        className={`${ubuntu.variable} ${ubuntu.className} ${poppins.variable} ${poppins.className} font-poppins from-p1 to-p2 bg-radial antialiased`}
       >
-        <NextTopLoader color="#00A86B" />
+        <NextTopLoader color="#1b1a55" />
+        <Navbar />
         {children}
       </body>
     </html>
