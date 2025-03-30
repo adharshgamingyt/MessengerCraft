@@ -2,7 +2,8 @@
 
 <div align="center">
   
-![MessengerCraft Logo](https://via.placeholder.com/150)
+<img src="https://github.com/adharshgamingyt/MessengerCraft/blob/main/public/logo-no-bg.png" alt="MessengerCraft Logo" style="width: 120px; height: auto;">
+
 
 **A modern messaging platform with advanced features including AI integration, group planning tools, and end-to-end encryption.**
 
