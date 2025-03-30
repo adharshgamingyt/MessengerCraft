@@ -1,10 +1,12 @@
 import React from "react";
 
+import { Navbar } from "@/components/my ui/Home/navbar";
+
 const HomePage = () => {
   return (
-    <div className="bg-p1 flex h-full w-full">
-      <div className="text-s2">hlo</div>
-    </div>
+    <main className="from-p1 to-p2 flex h-full w-full bg-radial">
+      <section className="text-s2 mx-auto my-25"></section>
+    </main>
   );
 };
 
