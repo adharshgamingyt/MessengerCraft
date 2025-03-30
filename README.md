@@ -118,6 +118,7 @@ MessengerCraft stands on the shoulders of these amazing open-source projects:
 - [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
 - [TypeScript](https://www.typescriptlang.org) - Typed JavaScript
 - [Convex](https://www.convex.dev) - Reactive backend platform
+- [Hono.js](https://hono.dev) - Fast and lightweight web framework
 
 ### UI Components & Libraries
 - [Radix UI](https://www.radix-ui.com) - Unstyled, accessible components
