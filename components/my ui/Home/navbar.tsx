@@ -16,25 +16,25 @@ export const Navbar = () => {
           <div className="flex space-x-8">
             <Link
               href="/"
-              className="text-sm font-medium text-white/90 transition-colors duration-200 hover:text-white"
+              className="text-sm font-medium text-white/90 underline-offset-4 transition-colors duration-200 hover:text-white hover:underline"
             >
               Home
             </Link>
             <Link
               href="/feature's"
-              className="text-sm font-medium text-white/90 transition-colors duration-200 hover:text-white"
+              className="text-sm font-medium text-white/90 underline-offset-4 transition-colors duration-200 hover:text-white hover:underline"
             >
               Feature
             </Link>
             <Link
               href="/support"
-              className="text-sm font-medium text-white/90 transition-colors duration-200 hover:text-white"
+              className="text-sm font-medium text-white/90 underline-offset-4 transition-colors duration-200 hover:text-white hover:underline"
             >
               Support
             </Link>
             <Link
               href="/about-us"
-              className="text-sm font-medium text-white/90 transition-colors duration-200 hover:text-white"
+              className="text-sm font-medium text-white/90 underline-offset-4 transition-colors duration-200 hover:text-white hover:underline"
             >
               About Us
             </Link>
