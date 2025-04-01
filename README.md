@@ -53,12 +53,7 @@ cd messengercraft
 bun install
 ```
 
-3. Start the Database
-```bash
-bunx convex dev
-```
-
-4. Start the development server
+3. Start the development server
 ```bash
 bun run dev
 ```
@@ -67,8 +62,8 @@ bun run dev
 
 - **Frontend**: React, Redux, TailwindCSS
 - **Backend**: Rust
-- **Database**: Convex
-- **Real-time Communication**: Convex Realtime
+- **Database**: Postgres, Drizzle ORM
+- **Real-time Communication**: Drizzle
 - **Authentication**: JWT, Auth.js
 - **Encryption**: MeeC Protocol [Our on Protocol]
 
@@ -118,8 +113,9 @@ MessengerCraft stands on the shoulders of these amazing open-source projects:
 - [React](https://react.dev) - The library for web and native user interfaces
 - [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
 - [TypeScript](https://www.typescriptlang.org) - Typed JavaScript
-- [Convex](https://www.convex.dev) - Reactive backend platform
+- [Drizzle](https://orm.drizzle.team) - Typesafe SQL queries, direct database control, and high performance.
 - [Hono.js](https://hono.dev) - Fast and lightweight web framework
+- [Neon Serverless Postgres](https://neon.tech) - Scalable, branching Postgres.
 
 ### UI Components & Libraries
 - [Radix UI](https://www.radix-ui.com) - Unstyled, accessible components
