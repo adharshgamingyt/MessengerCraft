@@ -16,8 +16,6 @@ body,
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
@@ -54,6 +52,9 @@ body,
   --secondary: oklch(44.95% 0 0);
   --secondary-background: oklch(97.51% 0.0127 244.25);
   --secondary-asscent: oklch(75.09% 0.0797 144.73);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
 }
 
 .dark {
