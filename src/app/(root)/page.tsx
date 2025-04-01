@@ -1,6 +1,5 @@
+import { Button } from "@/src/components/ui/button";
 import React from "react";
-
-import { Navbar } from "@/components/my ui/Home/navbar";
 
 const HomePage = () => {
   return (

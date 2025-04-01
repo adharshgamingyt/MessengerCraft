@@ -3,8 +3,8 @@ import NextTopLoader from "nextjs-toploader";
 import { Poppins, Ubuntu } from "next/font/google";
 
 import "./globals.css";
-import { siteConfig } from "@/config/siteconfig";
-import { Navbar } from "@/components/my ui/Home/navbar";
+import { siteConfig } from "@/src/config/siteconfig";
+import { Navbar } from "@/src/components/my ui/Home/navbar";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
