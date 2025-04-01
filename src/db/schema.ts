@@ -23,6 +23,10 @@ export const users = pgTable("user", {
   email: text("email").unique(),
   emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
+  phone_number: integer("phone_number").unique(),
+  phoneVerified: timestamp("phoneVerified", {
+    mode: "date",
+  }),
 });
 
 export const accounts = pgTable(
