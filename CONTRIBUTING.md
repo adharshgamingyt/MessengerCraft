@@ -1,4 +1,5 @@
 <!-- omit in toc -->
+
 # Contributing to MessengerCraft
 
 First off, thanks for taking the time to contribute! ❤️
@@ -6,12 +7,14 @@ First off, thanks for taking the time to contribute! ❤️
 All types of contributions are encouraged and valued. See the [Table of Contents](#table-of-contents) for different ways to help and details about how this project handles them. Please make sure to read the relevant section before making your contribution. It will make it a lot easier for us maintainers and smooth out the experience for all involved. The community looks forward to your contributions. 🎉
 
 > And if you like the project, but just don't have time to contribute, that's fine. There are other easy ways to support the project and show your appreciation, which we would also be very happy about:
+>
 > - Star the project
 > - Tweet about it
 > - Refer this project in your project's readme
 > - Mention the project at local meetups and tell your friends/colleagues
 
 <!-- omit in toc -->
+
 ## Table of Contents
 
 - [Code of Conduct](#code-of-conduct)
@@ -25,14 +28,12 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 - [Commit Messages](#commit-messages)
 - [Join The Project Team](#join-the-project-team)
 
-
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
 [MessengerCraft Code of Conduct](https://github.com/adharshgamingyt/MessengerCraft/blob/main/CODE_OF_CONDUCT.md).
 By participating, you are expected to uphold this code. Please report unacceptable behavior
 to <>.
-
 
 ## I Have a Question
 
@@ -66,11 +67,13 @@ Depending on how large the project is, you may want to outsource the questioning
 ## I Want To Contribute
 
 > ### Legal Notice <!-- omit in toc -->
+>
 > When contributing to this project, you must agree that you have authored 100% of the content, that you have the necessary rights to the content and that the content you contribute may be provided under the project licence.
 
 ### Reporting Bugs
 
 <!-- omit in toc -->
+
 #### Before Submitting a Bug Report
 
 A good bug report shouldn't leave others needing to chase you up for more information. Therefore, we ask you to investigate carefully, collect information and describe the issue in detail in your report. Please complete the following steps in advance to help us fix any potential bug as fast as possible.
@@ -87,16 +90,18 @@ A good bug report shouldn't leave others needing to chase you up for more inform
 - Can you reliably reproduce the issue? And can you also reproduce it with older versions?
 
 <!-- omit in toc -->
+
 #### How Do I Submit a Good Bug Report?
 
 > You must never report security related issues, vulnerabilities or bugs including sensitive information to the issue tracker, or elsewhere in public. Instead sensitive bugs must be sent by email to <>.
+
 <!-- You may add a PGP key to allow the messages to be sent encrypted as well. -->
 
 We use GitHub issues to track bugs and errors. If you run into an issue with the project:
 
 - Open an [Issue](https://github.com/adharshgamingyt/MessengerCraft/issues/new). (Since we can't be sure at this point whether it is a bug or not, we ask you not to talk about a bug yet and not to label the issue.)
 - Explain the behavior you would expect and the actual behavior.
-- Please provide as much context as possible and describe the *reproduction steps* that someone else can follow to recreate the issue on their own. This usually includes your code. For good bug reports you should isolate the problem and create a reduced test case.
+- Please provide as much context as possible and describe the _reproduction steps_ that someone else can follow to recreate the issue on their own. This usually includes your code. For good bug reports you should isolate the problem and create a reduced test case.
 - Provide the information you collected in the previous section.
 
 Once it's filed:
@@ -107,12 +112,12 @@ Once it's filed:
 
 <!-- You might want to create an issue template for bugs and errors that can be used as a guide and that defines the structure of the information to be included. If you do so, reference it here in the description. -->
 
-
 ### Suggesting Enhancements
 
 This section guides you through submitting an enhancement suggestion for MessengerCraft, **including completely new features and minor improvements to existing functionality**. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.
 
 <!-- omit in toc -->
+
 #### Before Submitting an Enhancement
 
 - Make sure that you are using the latest version.
@@ -121,6 +126,7 @@ This section guides you through submitting an enhancement suggestion for Messeng
 - Find out whether your idea fits with the scope and aims of the project. It's up to you to make a strong case to convince the project's developers of the merits of this feature. Keep in mind that we want features that will be useful to the majority of our users and not just a small subset. If you're just targeting a minority of users, consider writing an add-on/plugin library.
 
 <!-- omit in toc -->
+
 #### How Do I Submit a Good Enhancement Suggestion?
 
 Enhancement suggestions are tracked as [GitHub issues](https://github.com/adharshgamingyt/MessengerCraft/issues).
@@ -140,11 +146,12 @@ Before diving into your first code contribution, please ensure you have the righ
 #### Development Environment Setup
 
 - **IDE Selection**: Choose an IDE that offers strong support for TypeScript and React development:
+
   - **Visual Studio Code** is recommended with our [suggested extensions](https://github.com/adharshgamingyt/MessengerCraft/blob/main/docs/vs%20code%20setup/index.md) for optimal development experience
   - **WebStorm** is also an excellent choice with built-in TypeScript and React support
   - Any other IDE with TypeScript and JSX/TSX syntax highlighting and linting capabilities
 
-- **Runtime Environment**: 
+- **Runtime Environment**:
   - [Bun](https://bun.sh) is required for running and testing the project
   - Install Bun following the instructions on their official website
   - Verify your installation with `bun --version` in your terminal
@@ -245,13 +252,14 @@ A well-structured commit history helps maintain a clean and readable project his
 
 We follow the **Conventional Commits** format:
 
-``` md
+```md
 <type>(<scope>): <subject>
 
 <body> (optional)
 ```
 
 - `type`: Describes the nature of the change. Examples:
+
   - `feat`: A new feature
 
   - `fix`: A bug fix
@@ -271,21 +279,26 @@ We follow the **Conventional Commits** format:
 - `body` (optional): If needed, include a more detailed explanation of what was changed and why.
 
 ### Examples
+
 ✅ Good commit messages:
-``` md
+
+```md
 feat(auth): add OAuth2 login support
 fix(ui): resolve layout shift in message list
 docs: update installation guide for Bun
 test(messages): add unit tests for message encryption
 ```
+
 ❌ Avoid:
-``` md
+
+```md
 fixed bug
 updated stuff
 more changes
 ```
 
 ### Additional Guidelines
+
 - Keep commit messages concise yet informative.
 
 - Use imperative mood (e.g., "Add feature" instead of "Added feature").
@@ -293,41 +306,47 @@ more changes
 - If a commit closes an issue, mention it in the message using GitHub keywords (e.g., fixes #42).
 
 - Squash trivial commits where possible to keep the history clean.
-  
+
 ## Join The Project Team
+
 We welcome active contributors who want to take on a larger role in maintaining and improving MessengerCraft! If you’re interested in joining the project team, here’s how you can get involved.
 
 ### Steps to Join
 
-1. **Make consistent contributions**  
+1. **Make consistent contributions**
+
    - Regularly contribute code, documentation, or community support.
    - Help review pull requests and provide constructive feedback.
    - Engage in discussions on issues and suggest improvements.
 
-2. **Demonstrate good collaboration**  
-   - Follow the [Code of Conduct](https://github.com/adharshgamingyt/MessengerCraft/blob/main/CODE_OF_CONDUCT.md).  
-   - Be respectful and supportive of other contributors.  
+2. **Demonstrate good collaboration**
+
+   - Follow the [Code of Conduct](https://github.com/adharshgamingyt/MessengerCraft/blob/main/CODE_OF_CONDUCT.md).
+   - Be respectful and supportive of other contributors.
    - Offer guidance to newcomers.
 
-3. **Express your interest**  
+3. **Express your interest**
+
    - Once you've made meaningful contributions, open an issue titled **"Request to Join the Project Team"**.
    - Describe your contributions and how you'd like to help maintain the project.
 
-4. **Team discussion and approval**  
-   - The current maintainers will review your contributions and discuss your request.  
-   - If approved, you will receive an invitation to join the team! 🎉  
+4. **Team discussion and approval**
+   - The current maintainers will review your contributions and discuss your request.
+   - If approved, you will receive an invitation to join the team! 🎉
 
 ### Team Member Responsibilities
 
-As a project team member, you’ll have additional responsibilities:  
+As a project team member, you’ll have additional responsibilities:
 
-- Help review and merge pull requests.  
-- Manage and triage issues to keep the project organized.  
-- Ensure project documentation stays up-to-date.  
-- Participate in discussions about the project's roadmap and improvements.  
+- Help review and merge pull requests.
+- Manage and triage issues to keep the project organized.
+- Ensure project documentation stays up-to-date.
+- Participate in discussions about the project's roadmap and improvements.
 
 We appreciate your interest in becoming a core part of MessengerCraft! 🚀
 
 <!-- omit in toc -->
+
 ## Attribution
+
 This guide is based on the [contributing.md](https://contributing.md/generator)!
