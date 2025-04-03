@@ -4,7 +4,6 @@ import { Poppins, Ubuntu } from "next/font/google";
 
 import "./globals.css";
 import { siteConfig } from "@/config/siteconfig";
-import { Navbar } from "@/components/my ui/Home/navbar";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -44,7 +43,6 @@ export default function RootLayout({
         className={`${ubuntu.variable} ${ubuntu.className} ${poppins.variable} ${poppins.className} font-poppins from-p1 to-p2 bg-radial antialiased`}
       >
         <NextTopLoader color="#1b1a55" />
-        <Navbar />
         {children}
       </body>
     </html>

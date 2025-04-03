@@ -4,7 +4,9 @@ import React from "react";
 const HomePage = () => {
   return (
     <main className="from-p1 to-p2 flex h-full w-full bg-radial">
-      <section className="text-s2 mx-auto my-25"></section>
+      <section className="text-s2 mx-auto my-25">
+        <h2>hlo</h2>
+      </section>
     </main>
   );
 };
