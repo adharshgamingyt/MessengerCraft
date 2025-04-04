@@ -147,7 +147,7 @@ Before diving into your first code contribution, please ensure you have the righ
 
 - **IDE Selection**: Choose an IDE that offers strong support for TypeScript and React development:
 
-  - **Visual Studio Code** is recommended with our [suggested extensions](https://github.com/adharshgamingyt/MessengerCraft/blob/main/docs/vs%20code%20setup/index.md) for optimal development experience
+  - **Visual Studio Code** is recommended with our [suggested extensions](https://github.com/adharshgamingyt/MessengerCraft/blob/main/docs/vs%20code%20setup/Installation_guide.md) for optimal development experience
   - **WebStorm** is also an excellent choice with built-in TypeScript and React support
   - Any other IDE with TypeScript and JSX/TSX syntax highlighting and linting capabilities
 
@@ -184,7 +184,7 @@ Documentation is crucial for the success of MessengerCraft. We welcome improveme
 
 Our documentation is organized in the [`docs`](https://github.com/adharshgamingyt/MessengerCraft/tree/main/docs) directory and includes:
 
-- Installation guides
+- Installation_guide.md
 - API documentation for contributor's
 - Usage examples
 - Tutorials
