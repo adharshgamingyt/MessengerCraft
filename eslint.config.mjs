@@ -14,7 +14,7 @@ const eslintConfig = [
     "next/core-web-vitals",
     "next/typescript",
     "plugin:react-hooks/recommended",
-    "plugin:tailwindcss/recommended"
+    "plugin:tailwindcss/recommended",
   ),
   ...compat.plugins("react-hooks", "tailwindcss"),
   {

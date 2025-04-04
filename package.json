@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,md}\""
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@auth/core": "^0.38.0",

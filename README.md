@@ -4,7 +4,6 @@
   
 <img src="https://github.com/adharshgamingyt/MessengerCraft/blob/main/public/logo-no-bg.png" alt="MessengerCraft Logo" style="width: 120px; height: auto;">
 
-
 **A modern messaging platform with advanced features including AI integration, group planning tools, and end-to-end encryption.**
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -43,17 +42,20 @@ bun >= 1.2
 ### Installation
 
 1. Clone the repository
+
 ```bash
 git clone https://github.com/adharshgamingyt/messengercraft.git
 cd messengercraft
 ```
 
 2. Install dependencies
+
 ```bash
 bun install
 ```
 
 3. Start the development server
+
 ```bash
 bun run dev
 ```
@@ -109,6 +111,7 @@ Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information
 MessengerCraft stands on the shoulders of these amazing open-source projects:
 
 ### Core Technologies
+
 - [Next.js](https://nextjs.org) - The React framework for production
 - [React](https://react.dev) - The library for web and native user interfaces
 - [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
@@ -118,6 +121,7 @@ MessengerCraft stands on the shoulders of these amazing open-source projects:
 - [Neon Serverless Postgres](https://neon.tech) - Scalable, branching Postgres.
 
 ### UI Components & Libraries
+
 - [Radix UI](https://www.radix-ui.com) - Unstyled, accessible components
 - [shadcn/ui](https://ui.shadcn.com) - Beautifully designed components
 - [Lucide](https://lucide.dev) - Beautiful & consistent icons
@@ -127,6 +131,7 @@ MessengerCraft stands on the shoulders of these amazing open-source projects:
 - [Zod](https://zod.dev) - TypeScript-first schema validation
 
 ### Utilities & Tools
+
 - [date-fns](https://date-fns.org) - Modern date utilities
 - [clsx](https://github.com/lukeed/clsx) - Tiny classname utility
 - [Tailwind Merge](https://github.com/dcastil/tailwind-merge) - Tailwind class merging
@@ -135,16 +140,19 @@ MessengerCraft stands on the shoulders of these amazing open-source projects:
 - [Vaul](https://vaul.emilkowal.ski) - Modern drawer component
 
 ### Animation & 3D
+
 - [Framer Motion](https://www.framer.com/motion/) - Animation library
 - [React Three Fiber](https://docs.pmnd.rs/react-three-fiber) - 3D rendering
 - [Three.js](https://threejs.org) - 3D library
 
 ### Special Thanks
+
 - The entire open-source community for their contributions
 - Our early adopters and beta testers
 - All contributors who helped shape MessengerCraft
 
 We're grateful to all the maintainers of these projects that make MessengerCraft possible.
+
 ## 📞 Contact
 
 [![GitHub Badge](https://img.shields.io/badge/-MessengerCraft-000000?style=flat-square&logo=github&logoColor=white)](https://github.com/adharshgamingyt/MessengerCraft)
