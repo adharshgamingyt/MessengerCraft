@@ -1,6 +1,6 @@
 # MessengerCraft Installation Guide
 
-This guide covers how to set up and run the MessengerCraft app, which is built with Next.js and uses Bun as its JavaScript runtime.
+This guide covers how to set up and run the MessengerCraft app, which is built with Next.js and uses Bun as both its JavaScript/TypeScript runtime and package manager with Drizzle ORM for Neon PostgreSQL.
 
 ## Prerequisites
 
@@ -8,7 +8,7 @@ Before installing MessengerCraft, make sure you have the following installed on 
 
 - **Bun** (version 1.2.0 or later)
 - **Git**
-- **Node.js** (version 18.0.0 or later, although Bun will handle most Node.js dependencies)
+- **Neon PostgreSQL Account** (Free tier available at https://neon.tech)
 
 ## Installation Steps
 
@@ -27,20 +27,27 @@ powershell -c "irm bun.sh/install.ps1 | iex"
 bun --version
 ```
 
-### 2. Clone the Repository
+### 2. Set Up Neon PostgreSQL
+
+1. Create an account at https://neon.tech
+2. Create a new project
+3. Create a new database named `messengercraft`
+4. Save your connection string which will look like: `postgresql://username:password@ep-something.region.aws.neon.tech/messengercraft`
+
+### 3. Clone the Repository
 
 ```bash
 git clone https://github.com/yourusername/messengercraft.git
 cd messengercraft
 ```
 
-### 3. Install Dependencies
+### 4. Install Dependencies
 
 ```bash
 bun install
 ```
 
-### 4. Environment Configuration
+### 5. Environment Configuration
 
 Copy the example environment file and configure it:
 
@@ -51,34 +58,46 @@ cp .env.example .env
 Open `.env` in your text editor and update the environment variables:
 
 ```.env
+# Database configuration with Neon PostgreSQL
+DATABASE_URL="postgresql://username:password@ep-something.region.aws.neon.tech/messengercraft?sslmode=require"
 
-# Database configuration
-DATABASE_URL="your-database-connection-string"
-
-AUTH_SECRET="Read more: https://cli.authjs.dev"
-
+# Auth key from authjs
+AUTH_SECRET="************************************" Read more: https://cli.authjs.dev
 ```
 
-### 5. Database Setup (if applicable)
+### 6. Database Setup with Drizzle ORM
 
-Run database migrations:
+Generate and run migrations:
 
 ```bash
-bun db:migrate
+# Generate migration
+bunx drizzle-kit generate
+
+# Push schema to database
+bun run db:migrate
 ```
 
 Seed the database with initial data (optional):
 
 ```bash
-bun db:seed
+bun run db:seed
 ```
 
-### 6. Running the Application
+### 7. TypeScript Configuration
+
+The project uses TypeScript with Bun. Bun has built-in TypeScript support without requiring a separate TypeScript installation:
+
+```bash
+# Type-check your project
+bun run typecheck
+```
+
+### 8. Running the Application
 
 #### Development Mode
 
 ```bash
-bun dev
+bun run dev
 ```
 
 This will start the application in development mode at `http://localhost:3000`.
@@ -87,30 +106,24 @@ This will start the application in development mode at `http://localhost:3000`.
 
 ```bash
 bun run build
-bun start
-```
-
-## Docker Installation (Alternative)
-
-If you prefer to use Docker:
-
-```bash
-# Build the Docker image
-docker build -t messengercraft .
-
-# Run the container
-docker run -p 3000:3000 --env-file .env messengercraft
+bun run start
 ```
 
 ## Common Issues and Troubleshooting
 
-### Bun Compatibility
+### Bun TypeScript Issues
 
-If you encounter issues with certain packages:
+If you encounter TypeScript-related issues with Bun:
 
 ```bash
-# Force Bun to use Node.js compatibility mode for problematic packages
-bun install --compat
+# Update Bun to the latest version
+bun upgrade
+
+# Clear TypeScript cache
+rm -rf node_modules/.cache
+
+# Install TypeScript types if needed
+bun add -d @types/node @types/react @types/react-dom
 ```
 
 ### Next.js Build Errors
@@ -123,29 +136,54 @@ rm -rf .next
 bun run build
 ```
 
-### Database Connection Issues
+### Drizzle ORM Issues
 
-Ensure your database is running and the connection string in `.env` is correct.
+If you encounter issues with Drizzle ORM:
+
+```bash
+# Recreate migration files
+bun run db:drop
+bun run db:generate
+
+# Push fresh schema
+bun run db:migrate
+```
+
+### Neon PostgreSQL Connection Issues
+
+If you encounter connection issues with Neon PostgreSQL:
+
+1. Ensure your connection string includes `?sslmode=require`
+2. Check that your IP is allowed in Neon's settings
+3. Verify that your database user has the correct permissions
+4. Test the connection using a tool like `psql` or a GUI client
 
 ## Updating the Application
 
 ```bash
 git pull
 bun install
+bun run db:migrate # Run if there are schema changes
 bun run build
 ```
 
 ## Additional Commands
 
 ```bash
-# Run tests
+# Run tests with Bun's built-in test runner
 bun test
 
+# Type check
+bun run typecheck
+
 # Lint code
-bun lint
+bun run lint
 
 # Format code
-bun format
+bun run format
+
+# Generate Drizzle types
+bun run db:migrate
 ```
 
 ## Need Help?
@@ -154,4 +192,4 @@ If you encounter any issues during installation, please:
 
 1. Check the project documentation in the `docs/` directory
 2. Open an issue on the GitHub repository
-3. Contact the development team at < >
+3. Contact the development team via GitHub issues
