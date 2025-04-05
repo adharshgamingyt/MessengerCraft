@@ -46,12 +46,6 @@ body,
   --sidebar-accent: oklch(0.967 0.001 286.375);
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
-  --primary: oklch(26.22% 0.1037 277.24);
-  --primary-background: oklch(18.07% 0.0581 267.75);
-  --primary-asscent: oklch(49.08% 0.0856 275.46);
-  --secondary: oklch(44.95% 0 0);
-  --secondary-background: oklch(97.51% 0.0127 244.25);
-  --secondary-asscent: oklch(75.09% 0.0797 144.73);
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
   --sidebar-ring: oklch(0.704 0.04 256.788);
@@ -90,12 +84,6 @@ body,
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.274 0.006 286.033);
   --sidebar-ring: oklch(0.442 0.017 285.786);
-  --primary: oklch(26.22% 0.1037 277.24);
-  --primary-background: oklch(18.07% 0.0581 267.75);
-  --primary-asscent: oklch(49.08% 0.0856 275.46);
-  --secondary: oklch(44.95% 0 0);
-  --secondary-background: oklch(97.51% 0.0127 244.25);
-  --secondary-asscent: oklch(75.09% 0.0797 144.73);
 }
 
 @theme inline {
@@ -137,12 +125,6 @@ body,
   --color-sidebar-ring: var(--sidebar-ring);
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
-  --p1: var(--primary);
-  --p2: var(--primary-background);
-  --p3: var(--primary-asscent);
-  --s1: var(--secondary);
-  --s2: var(--secondary-background);
-  --s3: var(--secondary-asscent);
 
   @keyframes accordion-down {
     from {
@@ -180,13 +162,4 @@ body,
 @theme {
   --font-poppins: var(--font-poppins);
   --font-poppins: var(--font-poppins-className);
-}
-
-@theme {
-  --color-p1: var(--p1);
-  --color-p2: var(--p2);
-  --color-p3: var(--p3);
-  --color-s1: var(--s1);
-  --color-s2: var(--s2);
-  --color-s3: var(--s3);
 }

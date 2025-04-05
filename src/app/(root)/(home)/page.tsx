@@ -4,7 +4,7 @@ import { ShineBorder } from "@/components/ui/shine-border";
 
 const Home = () => {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-black pt-32 pb-16">
+    <ShineBorder className="relative min-h-screen overflow-hidden bg-black pt-32 pb-16">
       <InteractiveGrid
         containerClassName="absolute inset-0"
         className="opacity-30"
@@ -42,7 +42,7 @@ const Home = () => {
           </div>
         </div>
       </ShineBorder>
-    </section>
+    </ShineBorder>
   );
 };
 
