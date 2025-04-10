@@ -43,10 +43,9 @@ export const Navbar = () => {
     <nav
       className={`left-0 z-50 flex h-16 items-center justify-between px-4 transition-all duration-300 sm:px-6 lg:px-8 ${
         isSticky
-          ? "fixed top-0 w-full bg-black/70 shadow-md backdrop-blur-lg"
+          ? "fixed top-0 w-full bg-transparent shadow-md backdrop-blur-lg"
           : "relative"
       }`}
-      ref={Nav}
     >
       <div className="flex flex-1 items-center justify-between">
         {/* Logo - Hide when sticky */}

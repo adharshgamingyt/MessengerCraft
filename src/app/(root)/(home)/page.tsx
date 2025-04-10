@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { InteractiveGrid } from "@/components/ui/interactive-grid";
+import { Separator } from "@/components/ui/separator";
 import { ShineBorder } from "@/components/ui/shine-border";
 
 const Home = () => {
@@ -22,9 +23,9 @@ const Home = () => {
             You Want to
           </h1>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-400">
-            Easily protect sensitive information on your community and calls.
-            Keep your focus on what you want to share while maintaining full
-            control over your privacy.
+            Keep your sensitive information safe in community discussions and
+            calls. Focus on sharing freely, empowered by full privacy control in
+            MessengerCraft.
           </p>
           <div className="flex justify-center gap-4">
             <Button
@@ -42,6 +43,10 @@ const Home = () => {
           </div>
         </div>
       </ShineBorder>
+      <section className="mx-auto my-6 flex h-[120px] items-center justify-center gap-4 space-x-6 p-6">
+        <p className="text-5xl text-white">4</p>
+        <Separator orientation="vertical" />
+      </section>
     </ShineBorder>
   );
 };
