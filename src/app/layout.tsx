@@ -4,6 +4,7 @@ import { Poppins, Ubuntu } from "next/font/google";
 
 import "./globals.css";
 import { siteConfig } from "@/config/siteconfig";
+import type { layout } from "@/types/layout";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -32,11 +33,7 @@ export const metadata: Metadata = {
     },
   ],
 };
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: layout) {
   return (
     <html lang="en">
       <body
