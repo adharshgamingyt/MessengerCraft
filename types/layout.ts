@@ -1,3 +1,3 @@
-export interface layout {
+export type layout = {
   children: React.ReactNode;
-}
+};
