@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { InteractiveGrid } from "@/components/ui/interactive-grid";
-import { Separator } from "@/components/ui/separator";
-import { ShineBorder } from "@/components/ui/shine-border";
+import { Button } from "@/src/components/ui/button";
+import { InteractiveGrid } from "@/src/components/ui/interactive-grid";
+import { Separator } from "@/src/components/ui/separator";
+import { ShineBorder } from "@/src/components/ui/shine-border";
 
 const Home = () => {
   return (

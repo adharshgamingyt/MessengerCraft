@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/src/components/ui/button";
 
 export const Navbar = () => {
   const Nav = useRef<HTMLDivElement>(null);

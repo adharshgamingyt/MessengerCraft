@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/my ui/Home/navbar";
+import { Navbar } from "@/src/components/my ui/Home/navbar";
 import type { layout } from "@/types/layout";
 
 const layout = ({ children }: layout) => {
