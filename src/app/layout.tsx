@@ -4,7 +4,7 @@ import { Poppins, Ubuntu } from "next/font/google";
 
 import "./globals.css";
 import { siteConfig } from "@/config/siteconfig";
-import type { layout } from "@/types/layout";
+import type { layout } from "@/src/types/layout types";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],

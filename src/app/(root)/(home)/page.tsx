@@ -2,6 +2,7 @@ import { Button } from "@/src/components/ui/button";
 import { InteractiveGrid } from "@/src/components/ui/interactive-grid";
 import { Separator } from "@/src/components/ui/separator";
 import { ShineBorder } from "@/src/components/ui/shine-border";
+import { Star, Globe, Shield, Clock } from "lucide-react";
 
 const Home = () => {
   return (
@@ -43,9 +44,45 @@ const Home = () => {
           </div>
         </div>
       </ShineBorder>
-      <section className="mx-auto my-6 flex h-[120px] items-center justify-center gap-4 space-x-6 p-6">
-        <p className="text-5xl text-white">4</p>
-        <Separator orientation="vertical" />
+
+      <section className="mx-auto my-12 flex flex-wrap items-center justify-center gap-8 px-6 sm:gap-12">
+        <div className="flex flex-col items-center">
+          <div className="flex items-center text-4xl font-bold text-white">
+            <span>4M+</span>
+            <Globe className="ml-2 size-6 text-gray-400" />
+          </div>
+          <p className="text-sm text-gray-400">Active Users</p>
+        </div>
+
+        <Separator orientation="vertical" className="hidden h-16 sm:block" />
+
+        <div className="flex flex-col items-center">
+          <div className="flex items-center text-4xl font-bold text-white">
+            <span>150+</span>
+            <Shield className="ml-2 size-6 text-gray-400" />
+          </div>
+          <p className="text-sm text-gray-400">Countries</p>
+        </div>
+
+        <Separator orientation="vertical" className="hidden h-16 sm:block" />
+
+        <div className="flex flex-col items-center">
+          <div className="flex items-center text-4xl font-bold text-white">
+            <span>4.9</span>
+            <Star className="ml-2 size-6 text-yellow-400" />
+          </div>
+          <p className="text-sm text-gray-400">User Rating</p>
+        </div>
+
+        <Separator orientation="vertical" className="hidden h-16 sm:block" />
+
+        <div className="flex flex-col items-center">
+          <div className="flex items-center text-4xl font-bold text-white">
+            <span>99.9%</span>
+            <Clock className="ml-2 size-6 text-gray-400" />
+          </div>
+          <p className="text-sm text-gray-400">Uptime</p>
+        </div>
       </section>
     </ShineBorder>
   );
