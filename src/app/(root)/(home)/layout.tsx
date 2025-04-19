@@ -1,5 +1,5 @@
 import { Navbar } from "@/src/components/my ui/Home/navbar";
-import type { layout } from "@/src/types/layout types";
+import type { layout } from "@/src/types/types";
 
 const layout = ({ children }: layout) => {
   return (
