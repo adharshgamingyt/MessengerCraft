@@ -163,3 +163,8 @@ body,
   --font-poppins: var(--font-poppins);
   --font-poppins: var(--font-poppins-className);
 }
+
+@plugin 'tailwind-scrollbar' {
+  nocompatible: true;
+  preferredstrategy: "pseudoelements";
+}
