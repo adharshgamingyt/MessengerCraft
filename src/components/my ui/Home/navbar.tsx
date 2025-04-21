@@ -41,6 +41,7 @@ export const Navbar = () => {
 
   return (
     <nav
+      ref={Nav}
       className={`left-0 z-50 flex h-16 items-center justify-between px-4 transition-all duration-300 sm:px-6 lg:px-8 ${
         isSticky
           ? "fixed top-0 w-full bg-transparent shadow-md backdrop-blur-lg"
