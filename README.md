@@ -113,12 +113,13 @@ MessengerCraft stands on the shoulders of these amazing open-source projects:
 ### Core Technologies
 
 - [Next.js](https://nextjs.org) - The React framework for production
-- [React](https://react.dev) - The library for web and native user interfaces
+- [React 19](https://react.dev) - The library for web and native user interfaces
 - [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
 - [TypeScript](https://www.typescriptlang.org) - Typed JavaScript
-- [Drizzle](https://orm.drizzle.team) - Typesafe SQL queries, direct database control, and high performance.
+- [Drizzle ORM](https://orm.drizzle.team) - Typesafe SQL queries
 - [Hono.js](https://hono.dev) - Fast and lightweight web framework
-- [Neon Serverless Postgres](https://neon.tech) - Scalable, branching Postgres.
+- [Neon Serverless Postgres](https://neon.tech) - Scalable, branching Postgres
+- [Auth.js](https://authjs.dev) - Authentication library (NextAuth.js)
 
 ### UI Components & Libraries
 
@@ -138,6 +139,7 @@ MessengerCraft stands on the shoulders of these amazing open-source projects:
 - [Sonner](https://sonner.emilkowal.ski) - Toast notifications
 - [CMDK](https://cmdk.paco.me) - Command menu component
 - [Vaul](https://vaul.emilkowal.ski) - Modern drawer component
+- [Resend](https://resend.com) - Email API for developers
 
 ### Animation & 3D
 
