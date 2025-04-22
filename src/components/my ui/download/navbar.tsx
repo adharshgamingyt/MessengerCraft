@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/src/components/ui/button";
 import { ShineBorder } from "../../ui/shine-border";
+import { Star } from "lucide-react";
 
 export const Navbar = () => {
   const Nav = useRef<HTMLDivElement>(null);
@@ -55,43 +56,52 @@ export const Navbar = () => {
         <div className="flex flex-1 items-center justify-between">
           {/* Logo - Hide when sticky */}
           <div
-            className={`flex-shrink-0 transition-opacity duration-300 ${isSticky ? "md:opacity-0" : "opacity-100"}`}
+            className={`flex-shrink-0 transition-opacity duration-300 ${isSticky ? "opacity-0" : "opacity-100"}`}
           >
             <Link href="/">
               <Image src="/logo-no-bg.png" alt="Logo" width={80} height={80} />
             </Link>
           </div>
 
-          {/* Navigation Links - Always visible, centered when sticky */}
+          {/* Navigation Links - Always visible on desktop, visible when sticky on mobile */}
           <div
-            className={`transition-all duration-300 md:block ${
+            className={`transition-all duration-300 ${
               isSticky
-                ? "absolute left-1/2 -translate-x-1/2 transform"
-                : "hidden"
+                ? "absolute left-1/2 flex w-full -translate-x-1/2 transform justify-center" // Better centering
+                : "hidden md:block" // Hidden on mobile, visible on desktop when not sticky
             }`}
           >
-            <div className={`space-x-4 ${isSticky ? "hidden" : "md:flex"}`}>
+            <div className="flex items-center justify-center space-x-6">
+              {/* Mobile (sticky) vs Desktop styling */}
               <Link
                 href="/"
-                className="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md transition-colors duration-200 hover:bg-white/20 hover:text-white"
+                className={`text-center text-xs font-medium text-white transition-all duration-200 md:rounded-full md:bg-white/10 md:px-4 md:py-2 md:text-sm md:backdrop-blur-md md:hover:bg-white/20 ${
+                  isSticky ? "hover:underline md:hover:no-underline" : ""
+                }`}
               >
                 Home
               </Link>
               <Link
                 href="/features"
-                className="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md transition-colors duration-200 hover:bg-white/20 hover:text-white"
+                className={`text-center text-xs font-medium text-white transition-all duration-200 md:rounded-full md:bg-white/10 md:px-4 md:py-2 md:text-sm md:backdrop-blur-md md:hover:bg-white/20 ${
+                  isSticky ? "hover:underline md:hover:no-underline" : ""
+                }`}
               >
                 Feature
               </Link>
               <Link
                 href="/support"
-                className="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md transition-colors duration-200 hover:bg-white/20 hover:text-white"
+                className={`text-center text-xs font-medium text-white transition-all duration-200 md:rounded-full md:bg-white/10 md:px-4 md:py-2 md:text-sm md:backdrop-blur-md md:hover:bg-white/20 ${
+                  isSticky ? "hover:underline md:hover:no-underline" : ""
+                }`}
               >
                 Support
               </Link>
               <Link
                 href="/about-us"
-                className="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md transition-colors duration-200 hover:bg-white/20 hover:text-white"
+                className={`text-center text-xs font-medium text-white transition-all duration-200 md:rounded-full md:bg-white/10 md:px-4 md:py-2 md:text-sm md:backdrop-blur-md md:hover:bg-white/20 ${
+                  isSticky ? "hover:underline md:hover:no-underline" : ""
+                }`}
               >
                 About Us
               </Link>
@@ -105,17 +115,14 @@ export const Navbar = () => {
             <Button className="hidden items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-lg transition-all duration-200 hover:bg-white/20 md:inline-flex">
               <Link href={"/on-boarding"}>Get Started</Link>
             </Button>
-            <Button className="hidden items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-lg transition-all duration-200 hover:bg-white/20 md:inline-flex">
-              <Link href={"/download"}>Download</Link>
-            </Button>
           </div>
 
           {/* Mobile Button - Hide when sticky */}
           <div
-            className={`flex transition-opacity duration-300 md:hidden ${isSticky ? "md:opacity-0" : "opacity-100"}`}
+            className={`flex transition-opacity duration-300 md:hidden ${isSticky ? "opacity-0" : "opacity-100"}`}
           >
             <Button className="items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-lg transition-all duration-200 hover:bg-white/20">
-              <Link href={"/download"}>Download</Link>
+              <Link href={"/on-boarding"}>Get Started</Link>
             </Button>
           </div>
         </div>
