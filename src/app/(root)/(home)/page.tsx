@@ -7,6 +7,7 @@ import { Button } from "@/src/components/ui/button";
 import { InteractiveGrid } from "@/src/components/ui/interactive-grid";
 import { Separator } from "@/src/components/ui/separator";
 import { ShineBorder } from "@/src/components/ui/shine-border";
+import Image from "next/image";
 
 const Home = () => {
   return (
@@ -118,7 +119,7 @@ const Home = () => {
                 className="relative mx-auto w-full max-w-md overflow-hidden border border-gray-800 bg-gray-900"
                 style={{ aspectRatio: "16/9" }}
               >
-                <img
+                <Image
                   src="/api/placeholder/800/450"
                   alt="Real-time messaging"
                   className="h-full w-full object-cover"
@@ -151,7 +152,7 @@ const Home = () => {
                 className="relative mx-auto w-full max-w-md overflow-hidden border border-gray-800 bg-gray-900"
                 style={{ aspectRatio: "16/9" }}
               >
-                <img
+                <Image
                   src="/api/placeholder/800/450"
                   alt="Smart organization"
                   className="h-full w-full object-cover"
@@ -184,7 +185,7 @@ const Home = () => {
                 className="relative mx-auto w-full max-w-md overflow-hidden border border-gray-800 bg-gray-900"
                 style={{ aspectRatio: "16/9" }}
               >
-                <img
+                <Image
                   src="/api/placeholder/800/450"
                   alt="Cross-platform support"
                   className="h-full w-full object-cover"
@@ -199,8 +200,9 @@ const Home = () => {
               <div className="mt-2 h-px w-16 bg-white"></div>
               <p className="mt-6 text-lg text-gray-300">
                 Stay connected across all your devices with perfect
-                synchronization. Whether you're on desktop, mobile, or tablet,
-                your messages, settings, and preferences remain consistent.
+                synchronization. Whether you&apos;re on desktop, mobile, or
+                tablet, your messages, settings, and preferences remain
+                consistent.
               </p>
               <p className="mt-4 text-lg text-gray-300">
                 Enjoy a native experience on each platform with interfaces
