@@ -123,6 +123,8 @@ const Home = () => {
                   src="/api/placeholder/800/450"
                   alt="Real-time messaging"
                   className="h-full w-full object-cover"
+                  width={800}
+                  height={450}
                 />
                 <div className="bg-opacity-20 absolute inset-0 bg-black"></div>
               </div>
@@ -156,6 +158,8 @@ const Home = () => {
                   src="/api/placeholder/800/450"
                   alt="Smart organization"
                   className="h-full w-full object-cover"
+                  width={800}
+                  height={450}
                 />
                 <div className="bg-opacity-20 absolute inset-0 bg-black"></div>
               </div>
@@ -189,6 +193,8 @@ const Home = () => {
                   src="/api/placeholder/800/450"
                   alt="Cross-platform support"
                   className="h-full w-full object-cover"
+                  width={800}
+                  height={450}
                 />
                 <div className="bg-opacity-20 absolute inset-0 bg-black"></div>
               </div>
