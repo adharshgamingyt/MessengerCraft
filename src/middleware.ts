@@ -1,6 +1,13 @@
 import { auth } from "@/auth";
 
-export default auth((req) => {
+import {
+  authRoute,
+  publicRoutes,
+  apiAuthPrefix,
+  DEFAULT_LOGIN_REDIRECT,
+} from "./routes";
+
+export default auth((req, res) => {
   // Secure the route with authentication
 });
 
