@@ -64,12 +64,8 @@
           "tableFrom": "authenticator",
           "tableTo": "user",
           "schemaTo": "public",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -77,9 +73,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "authenticator_credentialID_unique": {
-          "columns": [
-            "credentialID"
-          ],
+          "columns": ["credentialID"],
           "nullsNotDistinct": false,
           "name": "authenticator_credentialID_unique"
         }
@@ -118,12 +112,8 @@
           "tableFrom": "session",
           "tableTo": "user",
           "schemaTo": "public",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -212,12 +202,8 @@
           "tableFrom": "account",
           "tableTo": "user",
           "schemaTo": "public",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -311,16 +297,12 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "user_email_unique": {
-          "columns": [
-            "email"
-          ],
+          "columns": ["email"],
           "nullsNotDistinct": false,
           "name": "user_email_unique"
         },
         "user_phone_number_unique": {
-          "columns": [
-            "phone_number"
-          ],
+          "columns": ["phone_number"],
           "nullsNotDistinct": false,
           "name": "user_phone_number_unique"
         }
