@@ -2,11 +2,11 @@
 
 import * as z from "zod";
 import bcrypt from "bcryptjs";
-import { eq } from "drizzle-orm";
 
 import { RegisterSchema } from "@/src/schema";
 import { db } from "@/src/db";
 import { user } from "@/src/db/schema";
+import { getUserByEmail } from "@/src/data/User";
 
 export const register = async (data: z.infer<typeof RegisterSchema>) => {
   const validatedFields = RegisterSchema.safeParse(data);
@@ -21,16 +21,13 @@ export const register = async (data: z.infer<typeof RegisterSchema>) => {
     return { error: "Passwords do not match!" };
   }
 
-  // This check is likely redundant if your RegisterSchema already validates password length
-  // But I'm keeping it for now, just in case
+  // Note: just in case as an fallback, but the schema should already handle this
   if (password.length < 8) {
     return { error: "Password must be at least 8 characters!" };
   }
 
   try {
-    const existingUser = await db.query.user.findFirst({
-      where: eq(user.email, email),
-    });
+    const existingUser = await getUserByEmail(email);
 
     if (existingUser) {
       return { error: "User already exists!" };
