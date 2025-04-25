@@ -3,7 +3,7 @@ import NextTopLoader from "nextjs-toploader";
 import { Poppins, Ubuntu } from "next/font/google";
 
 import "./globals.css";
-import { siteConfig } from "@/config/siteconfig";
+import { siteConfig } from "@/src/config/siteconfig";
 import type { layout } from "@/src/types/types";
 
 const poppins = Poppins({
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   // Todo: Update the informations
   title: {
     default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
+    template: `%s ︱ ${siteConfig.name}`,
   },
   description: siteConfig.description,
   icons: [{ url: "/logo-no-bg.png", href: "/logo-no-bg.png" }],

@@ -27,7 +27,6 @@ export const RegisterForm = () => {
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
-      name: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -37,7 +36,18 @@ export const RegisterForm = () => {
 
   const onSubmit = (data: z.infer<typeof RegisterSchema>) => {
     startTransition(() => {
-      register(data).then();
+      register(data)
+        .then((data) => {
+          if (data.error) {
+            console.log(data.error);
+          }
+          if (data.success) {
+            console.log(data.success);
+          }
+        })
+        .catch(() => {
+          console.log("Something went wrong!");
+        });
     });
   };
 
@@ -80,32 +90,6 @@ export const RegisterForm = () => {
 
           <Form {...form}>
             <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
-              <div className="space-y-2">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-sm font-medium text-zinc-200">
-                        Full Name
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          id="name"
-                          placeholder="John Doe"
-                          type="text"
-                          autoComplete="name"
-                          disabled={isPending}
-                          className="border-zinc-800 bg-zinc-900 text-white placeholder:text-zinc-400 focus-visible:ring-violet-600"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
               <div className="space-y-2">
                 <FormField
                   control={form.control}
@@ -184,46 +168,46 @@ export const RegisterForm = () => {
                 />
               </div>
 
-              <div className="flex space-x-2">
-                <FormField
-                  control={form.control}
-                  name="terms"
-                  render={({ field }) => (
-                    <FormItem className="flex items-center space-x-2">
-                      <FormControl>
-                        <Checkbox
-                          checked={field.value}
-                          onCheckedChange={field.onChange}
-                          className="border-zinc-700 data-[state=checked]:border-violet-600 data-[state=checked]:bg-violet-600"
-                          disabled={isPending}
-                        />
-                      </FormControl>
-                      <div className="space-y-1 leading-none">
-                        <FormLabel className="text-sm font-medium text-zinc-400">
-                          I agree to the{" "}
-                          <Link
-                            href="#"
-                            className="text-violet-400 hover:text-violet-300"
-                          >
-                            Terms of Service
-                          </Link>{" "}
-                          and{" "}
-                          <Link
-                            href="#"
-                            className="text-violet-400 hover:text-violet-300"
-                          >
-                            Privacy Policy
-                          </Link>
-                        </FormLabel>
-                      </div>
-                    </FormItem>
-                  )}
-                />
-              </div>
+              <FormField
+                control={form.control}
+                name="terms"
+                render={({ field }) => (
+                  // Todo: fix the label issue in mobile devices
+                  <FormItem className="flex items-center space-x-2">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                        className="mt-0.5 h-4 w-4 border-zinc-700 data-[state=checked]:border-violet-600 data-[state=checked]:bg-violet-600"
+                        disabled={isPending}
+                      />
+                    </FormControl>
+                    <div className="spcae-y-1 leading-none">
+                      <FormLabel className="text-sm font-medium text-zinc-400">
+                        I agree to the{" "}
+                        <Link
+                          href="#"
+                          className="text-violet-400 hover:text-violet-300"
+                        >
+                          Terms of Service
+                        </Link>{" "}
+                        and{" "}
+                        <Link
+                          href="#"
+                          className="text-violet-400 hover:text-violet-300"
+                        >
+                          Privacy Policy
+                        </Link>
+                      </FormLabel>
+                      <FormMessage className="mt-1" />
+                    </div>
+                  </FormItem>
+                )}
+              />
 
               <Button
                 type="submit"
-                className="w-full bg-violet-600 text-white hover:bg-violet-700"
+                className="w-full cursor-pointer bg-violet-600 text-white hover:bg-violet-700 disabled:cursor-not-allowed disabled:bg-violet-600"
                 disabled={isPending}
               >
                 Sign up

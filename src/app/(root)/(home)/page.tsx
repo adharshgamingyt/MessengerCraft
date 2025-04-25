@@ -2,12 +2,12 @@
 
 import { Star, Globe, Shield, Clock, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 import { Button } from "@/src/components/ui/button";
 import { InteractiveGrid } from "@/src/components/ui/interactive-grid";
 import { Separator } from "@/src/components/ui/separator";
 import { ShineBorder } from "@/src/components/ui/shine-border";
-import Image from "next/image";
 
 const Home = () => {
   return (

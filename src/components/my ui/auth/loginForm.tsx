@@ -164,7 +164,8 @@ export const LoginForm = () => {
               </div>
               <Button
                 type="submit"
-                className="w-full bg-violet-600 text-white hover:bg-violet-700"
+                className="w-full cursor-pointer bg-violet-600 text-white hover:bg-violet-700 disabled:cursor-not-allowed disabled:bg-violet-600"
+                disabled={isPending}
               >
                 Sign in
               </Button>
