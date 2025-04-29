@@ -61,7 +61,7 @@
     "cva": "^0.0.0",
     "date-fns": "^4.1.0",
     "dotenv": "^16.5.0",
-    "drizzle-orm": "^0.41.0",
+    "drizzle-orm": "^0.43.1",
     "drizzle-typebox": "^0.3.2",
     "embla-carousel-react": "^8.6.0",
     "hono": "^4.7.7",
