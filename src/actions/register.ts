@@ -21,6 +21,15 @@ export const register = async (data: z.infer<typeof RegisterSchema>) => {
     return { error: "Passwords do not match!" };
   }
 
+  const hasAlphabet = /[a-zA-Z]/.test(password);
+  const hasNumber = /\d/.test(password);
+
+  if (!hasAlphabet || !hasNumber) {
+    return {
+      error: "Password must contain at least one letter and one number!",
+    };
+  }
+
   // Note: just in case as an fallback, but the schema should already handle this
   if (password.length < 8) {
     return { error: "Password must be at least 8 characters!" };

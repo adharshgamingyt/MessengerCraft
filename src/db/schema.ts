@@ -25,7 +25,15 @@ export const user = pgTable("user", {
   }),
   country_code: integer("country_code"),
 
-  // Todo: add any app related fields under
+  // Note: any security fields go under
+
+  twoFactorAuth: boolean("twoFactorAuth").$defaultFn(() => false),
+  twoFactorConfirmation: text("twoFactorConfirmation").references(
+    () => twoFactorConfirmation.id,
+    { onDelete: "cascade" },
+  ),
+
+  // Note: add any app related fields under
 
   createdAt: timestamp("createdAt", { mode: "date" }).defaultNow().notNull(),
   updatedAt: timestamp("updatedAt", { mode: "date" })
@@ -60,14 +68,6 @@ export const accounts = pgTable(
     },
   ],
 );
-
-export const sessions = pgTable("session", {
-  sessionToken: text("sessionToken").primaryKey(),
-  userId: text("userId")
-    .notNull()
-    .references(() => user.id, { onDelete: "cascade" }),
-  expires: timestamp("expires", { mode: "date" }).notNull(),
-});
 
 export const verificationTokens = pgTable(
   "verificationToken",
@@ -107,3 +107,27 @@ export const authenticators = pgTable(
     },
   ],
 );
+
+export const twoFactorTokens = pgTable(
+  "twoFactorToken",
+  {
+    identifier: text("identifier").notNull(),
+    token: text("token").notNull(),
+    expires: timestamp("expires", { mode: "date" }).notNull(),
+  },
+  (twoFactorTokens) => [
+    {
+      compositePk: primaryKey({
+        columns: [twoFactorTokens.identifier, twoFactorTokens.token],
+      }),
+    },
+  ],
+);
+
+export const twoFactorConfirmation = pgTable("twoFactorConfirmation", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID())
+    .notNull(),
+  userId: text("userId").notNull().unique(),
+});
