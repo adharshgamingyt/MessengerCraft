@@ -1,7 +1,16 @@
-import React from "react";
+import React, { Suspense } from "react";
+import { auth } from "@/auth";
 
-const onBoardingPage = () => {
-  return <div>lol</div>;
-};
+export default async function OnBoardingPage() {
+  const session = await auth();
 
-export default onBoardingPage;
+  return (
+    <div>
+      <h1>Welcome to Onboarding!</h1>
+      <Suspense fallback={<div>Loading...</div>}>
+        <p>Session: {JSON.stringify(session?.user)}</p>
+        <p>Onboarding content goes here...</p>
+      </Suspense>
+    </div>
+  );
+}

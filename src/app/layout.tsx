@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import { Poppins, Ubuntu } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
+import { Suspense } from "react";
 
 import "./globals.css";
 import { siteConfig } from "@/src/config/siteconfig";
 import type { layout } from "@/src/types/types";
+import { auth } from "@/auth";
+import { Loader } from "@/src/components/my ui/global/loader";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -33,15 +37,19 @@ export const metadata: Metadata = {
     },
   ],
 };
-export default function RootLayout({ children }: layout) {
+export default async function RootLayout({ children }: layout) {
+  const session = await auth();
+
   return (
-    <html lang="en">
-      <body
-        className={`${ubuntu.variable} ${ubuntu.className} ${poppins.variable} ${poppins.className} font-poppins from-p1 to-p2 bg-radial antialiased`}
-      >
-        <NextTopLoader color="#1b1a55" />
-        {children}
-      </body>
-    </html>
+    <SessionProvider session={session}>
+      <html lang="en">
+        <body
+          className={`${ubuntu.variable} ${ubuntu.className} ${poppins.variable} ${poppins.className} font-poppins from-p1 to-p2 bg-radial antialiased`}
+        >
+          <NextTopLoader color="#1b1a55" />
+          <Suspense fallback={<Loader />}>{children}</Suspense>
+        </body>
+      </html>
+    </SessionProvider>
   );
 }

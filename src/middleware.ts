@@ -48,18 +48,21 @@ export default auth(async (req) => {
       return NextResponse.redirect(new URL("/auth/login", nextUrl));
     }
 
-    return;
-  }
+    if (isOnBoardingRoute) {
+      try {
+        const user = await getUserById(req.auth?.user?.id || "");
 
-  if (isOnBoardingRoute) {
-    if (!isLoggedIn) {
-      return NextResponse.redirect(new URL("/auth/login", nextUrl));
-    }
+        if ((user && user?.name !== null) || user?.name !== "") {
+          console.log(`email: ${user?.name}`);
+          return NextResponse.redirect(new URL(DEFAULT_ENTRY_POINT, nextUrl));
+        }
 
-    // Todo: Add when user that completed onboarding cant visit it
-
-    if (isLoggedIn) {
-      return NextResponse.redirect(new URL(DEFAULT_ENTRY_POINT, nextUrl));
+        console.log(`email: ${user?.email}`);
+        return;
+      } catch (error) {
+        console.error("Error fetching user:", error);
+        return;
+      }
     }
 
     return;

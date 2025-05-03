@@ -2,7 +2,7 @@ import type { layout } from "@/src/types/types";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Onboarding",
+  title: "On-Boarding",
 };
 
 const OnBoardingLayout = ({ children }: layout) => {
