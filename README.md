@@ -10,6 +10,7 @@
 [![GitHub Stars](https://img.shields.io/github/stars/adharshgamingyt/messengercraft?style=social)](https://github.com/adharshgamingyt/messengercraft/stargazers)
 [![GitHub Issues](https://img.shields.io/github/issues/adharshgamingyt/messengercraft)](https://github.com/adharshgamingyt/messengercraft/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/adharshgamingyt/messengercraft)](https://github.com/adharshgamingyt/messengercraft/pulls)
+[![GitHub package.json version](https://img.shields.io/github/package-json/v/adharshgamingyt/MessengerCraft)](#)
 
 [Demo](https://example.com) | [Documentation](https://example.com/docs) | [Report Bug](https://github.com/adharshgamingyt/messengercraft/issues) | [Request Feature](https://github.com/adharshgamingyt/messengercraft/issues)
 
