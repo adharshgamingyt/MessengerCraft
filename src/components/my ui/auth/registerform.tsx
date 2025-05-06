@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { useTransition } from "react";
+import { toast } from "sonner";
 
 import { Button } from "@/src/components/ui/button";
 import { Input } from "@/src/components/ui/input";
@@ -39,14 +40,14 @@ export const RegisterForm = () => {
       register(data)
         .then((data) => {
           if (data.error) {
-            console.log(data.error);
+            toast.error(data.error);
           }
           if (data.success) {
-            console.log(data.success);
+            toast.success(data.success);
           }
         })
         .catch(() => {
-          console.log("Something went wrong!");
+          toast.error("Something went wrong!");
         });
     });
   };
@@ -172,18 +173,17 @@ export const RegisterForm = () => {
                 control={form.control}
                 name="terms"
                 render={({ field }) => (
-                  // Todo: fix the label issue in mobile devices
                   <FormItem className="flex items-center space-x-2">
                     <FormControl>
                       <Checkbox
                         checked={field.value}
                         onCheckedChange={field.onChange}
-                        className="mt-0.5 h-4 w-4 border-zinc-700 data-[state=checked]:border-violet-600 data-[state=checked]:bg-violet-600"
+                        className="mx-0 mt-0.5 h-4 w-4 border-zinc-700 data-[state=checked]:border-violet-600 data-[state=checked]:bg-violet-600"
                         disabled={isPending}
                       />
                     </FormControl>
-                    <div className="spcae-y-1 leading-none">
-                      <FormLabel className="text-sm font-medium text-zinc-400">
+                    <div className="space-y-1 leading-none">
+                      <FormLabel className="block text-sm font-medium text-balance text-zinc-400 md:flex">
                         I agree to the{" "}
                         <Link
                           href="#"

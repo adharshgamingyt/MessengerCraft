@@ -20,6 +20,7 @@ import {
 import { LoginSchema } from "@/src/schema";
 import { useTransition } from "react";
 import { login } from "@/src/actions/login";
+import { toast } from "sonner";
 
 export const LoginForm = () => {
   const [isPending, startTransition] = useTransition();
@@ -35,7 +36,15 @@ export const LoginForm = () => {
 
   const onSubmit = (data: z.infer<typeof LoginSchema>) => {
     startTransition(() => {
-      login(data).then();
+      login(data)
+        .then((data) => {
+          if (data?.error) {
+            toast.error(data.error);
+          }
+        })
+        .catch(() => {
+          toast.error("Something went wrong!");
+        });
     });
   };
 
@@ -149,7 +158,7 @@ export const LoginForm = () => {
                         <Checkbox
                           checked={field.value}
                           onCheckedChange={field.onChange}
-                          className="border-zinc-700 data-[state=checked]:border-violet-600 data-[state=checked]:bg-violet-600"
+                          className="mx-0 border-zinc-700 data-[state=checked]:border-violet-600 data-[state=checked]:bg-violet-600"
                           disabled={isPending}
                         />
                       </FormControl>

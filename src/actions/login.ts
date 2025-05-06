@@ -22,7 +22,11 @@ export const login = async (data: z.infer<typeof LoginSchema>) => {
 
   const user = await getUserByEmail(email);
 
-  if (!user!.password) {
+  if (!user) {
+    return { error: "User not found!" };
+  }
+
+  if (!user.password) {
     return { error: "Please use you'r google or anyother provider to login!" };
   }
 

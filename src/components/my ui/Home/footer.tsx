@@ -153,7 +153,7 @@ const Footer = () => {
           {/* Bottom section with social links, copyright */}
           <div className="flex flex-col items-center justify-between border-t border-gray-800 pt-8 md:flex-row">
             <p className="mb-4 text-sm text-gray-400 md:mb-0">
-              © {date()} MessengerCraft. All rights reserved.
+              © {new Date().getFullYear()} MessengerCraft. All rights reserved.
             </p>
 
             <div className="flex space-x-6">

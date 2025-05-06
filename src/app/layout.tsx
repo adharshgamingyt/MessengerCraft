@@ -9,6 +9,7 @@ import { siteConfig } from "@/src/config/siteconfig";
 import type { layout } from "@/src/types/types";
 import { auth } from "@/auth";
 import { Loader } from "@/src/components/my ui/global/loader";
+import { Toaster } from "@/src/components/ui/sonner";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -47,7 +48,10 @@ export default async function RootLayout({ children }: layout) {
           className={`${ubuntu.variable} ${ubuntu.className} ${poppins.variable} ${poppins.className} font-poppins from-p1 to-p2 bg-radial antialiased`}
         >
           <NextTopLoader color="#1b1a55" />
-          <Suspense fallback={<Loader />}>{children}</Suspense>
+          <Suspense fallback={<Loader />}>
+            {children}
+            <Toaster richColors />
+          </Suspense>
         </body>
       </html>
     </SessionProvider>
