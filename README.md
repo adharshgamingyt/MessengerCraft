@@ -6,7 +6,8 @@
 
 **A modern messaging platform with advanced features including AI integration, group planning tools, and end-to-end encryption.**
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![GitHub License](https://img.shields.io/github/license/adharshgamingyt/MessengerCraft)
+(LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/adharshgamingyt/messengercraft?style=social)](https://github.com/adharshgamingyt/messengercraft/stargazers)
 [![GitHub Issues](https://img.shields.io/github/issues/adharshgamingyt/messengercraft)](https://github.com/adharshgamingyt/messengercraft/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/adharshgamingyt/messengercraft)](https://github.com/adharshgamingyt/messengercraft/pulls)
