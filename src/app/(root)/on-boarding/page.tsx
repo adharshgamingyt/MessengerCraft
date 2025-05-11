@@ -9,20 +9,19 @@ import { logout } from "@/src/actions/logout";
 export default async function OnBoardingPage() {
   const session = await auth();
   const user = session?.user;
-  const id = user?.id;
 
   return (
     <div>
       <h1>Welcome to Onboarding!</h1>
       <p>{JSON.stringify(user)}</p>
-      {/* <Button
+      <Button
         onClick={async () => {
           "use server";
           await update({ user: { user } });
         }}
       >
         Update
-      </Button>{" "} */}
+      </Button>{" "}
       <Button
         onClick={async () => {
           "use server";

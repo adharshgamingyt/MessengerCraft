@@ -4,25 +4,39 @@ import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { db } from "@/src/db";
 import { getUserById } from "@/src/data/User";
 import { authConfig } from "@/auth.config";
-import async from "./src/app/(root)/on-boarding/page";
 
-export const { handlers, auth, signIn, signOut, unstable_update } = NextAuth({
-  callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      //Note: can block user's from login
-      return true;
-    },
-    async session({ session, token }) {
-      return session;
-    },
-    async jwt({ token, user, account, profile, isNewUser }) {
-      if (token.sub) {
-        console.log(token);
-      }
-      return token;
-    },
-  },
+export const {
+  handlers: { GET, POST },
+  auth,
+  signIn,
+  signOut,
+  unstable_update,
+} = NextAuth({
   adapter: DrizzleAdapter(db),
   session: { strategy: "jwt" },
   ...authConfig,
+  callbacks: {
+    async session({ token, session }) {
+      if (token.sub && session.user) {
+        session.user.id = token.sub;
+      }
+
+      session.user.username = token.username;
+
+      console.log("Session", session);
+      return session;
+    },
+    async jwt({ token }) {
+      if (!token.sub) return token;
+
+      const existingUser = await getUserById(token.sub);
+
+      if (!existingUser) return token;
+
+      token.username = existingUser.username;
+
+      console.log("JWT: ", token);
+      return token;
+    },
+  },
 });

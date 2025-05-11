@@ -24,7 +24,9 @@ export type User = InferSelectModel<typeof user>;
 import NextAuth, { type DefaultSession } from "next-auth";
 
 /** Making extending easy to understand */
-export type ExtendedSession = DefaultSession["user"] & {};
+export type ExtendedSession = DefaultSession["user"] & {
+  username: string | null;
+};
 
 /** Extending Session */
 declare module "next-auth" {
@@ -38,7 +40,9 @@ import { JWT } from "next-auth/jwt";
 
 declare module "next-auth/jwt" {
   /** Returned by the `jwt` callback and `auth`, when using JWT sessions */
-  interface JWT {}
+  interface JWT {
+    username: string | null;
+  }
 }
 
 /** Auth Extending ends */
