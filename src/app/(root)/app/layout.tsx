@@ -1,16 +1,8 @@
-import { Metadata } from "next";
-
+import React from "react";
 import type { layout } from "@/src/types/types";
-import { currentUser } from "@/src/lib/auth";
 
-const user = await currentUser();
-
-export const metadata: Metadata = {
-  title: `${user?.name}`,
+const AppLayout = ({ children }: layout) => {
+  return <div>{children}</div>;
 };
 
-const layout = ({ children }: layout) => {
-  return <div className="h-full w-full bg-black">{children}</div>;
-};
-
-export default layout;
+export default AppLayout;
