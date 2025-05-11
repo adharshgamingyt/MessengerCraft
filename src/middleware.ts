@@ -47,22 +47,27 @@ export default auth(async (req) => {
     if (!isLoggedIn) {
       return NextResponse.redirect(new URL("/auth/login", nextUrl));
     }
+    const user = await getUserById(req.auth?.user?.id || "");
+
+    if (!isOnBoardingRoute) {
+      if (!user?.username || user.username !== undefined) {
+        return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
+      }
+    }
 
     if (isOnBoardingRoute) {
-      try {
-        const user = await getUserById(req.auth?.user?.id || "");
-
-        if ((user && user?.name !== null) || user?.name !== "") {
-          console.log(`email: ${user?.name}`);
-          return NextResponse.redirect(new URL(DEFAULT_ENTRY_POINT, nextUrl));
-        }
-
-        console.log(`email: ${user?.email}`);
+      if (
+        (user?.name && user.username === null) ||
+        "" ||
+        user?.phone_number === null ||
+        !user?.phone_number
+      ) {
         return;
-      } catch (error) {
-        console.error("Error fetching user:", error);
-        return;
+      } else if ((user && user?.name !== null) || user?.name !== "") {
+        return NextResponse.redirect(new URL(DEFAULT_ENTRY_POINT, nextUrl));
       }
+
+      return;
     }
 
     return;

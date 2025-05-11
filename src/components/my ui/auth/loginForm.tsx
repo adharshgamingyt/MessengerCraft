@@ -42,7 +42,11 @@ export const LoginForm = () => {
             toast.error(data.error);
           }
         })
-        .catch(() => {
+        .catch((error) => {
+          console.log(
+            `Report the error in github(only for dev's and bug hunter's): ${error}`,
+          );
+          console.log(error);
           toast.error("Something went wrong!");
         });
     });

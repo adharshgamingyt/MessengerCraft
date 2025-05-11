@@ -4,15 +4,10 @@ import type { layout } from "@/src/types/types";
 import { Metadata } from "next";
 import { currentUser } from "@/src/lib/auth";
 
-export const UserName = async () => {
-  const user = await currentUser();
-  return user?.name;
-};
-
 export async function generateMetadata(): Promise<Metadata> {
   const user = await currentUser();
   return {
-    title: user?.name ? `@${user.name}` : "@me",
+    title: user?.name ? `@${user.username}` : "@me",
   };
 }
 
