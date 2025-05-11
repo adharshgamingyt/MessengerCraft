@@ -40,11 +40,11 @@ export const login = async (data: z.infer<typeof LoginSchema>) => {
     await signIn("credentials", {
       email,
       password,
-      redirectTo: DEFAULT_LOGIN_REDIRECT,
     });
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.cause) {
+        // Todo: fix this
         case "CredentialsSignin":
           return { error: "Invalid credentials!" };
         default:

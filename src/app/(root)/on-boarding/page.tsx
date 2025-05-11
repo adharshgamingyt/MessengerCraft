@@ -14,7 +14,7 @@ export default async function OnBoardingPage() {
   return (
     <div>
       <h1>Welcome to Onboarding!</h1>
-      <p>{JSON.stringify(id)}</p>
+      <p>{JSON.stringify(user)}</p>
       {/* <Button
         onClick={async () => {
           "use server";
