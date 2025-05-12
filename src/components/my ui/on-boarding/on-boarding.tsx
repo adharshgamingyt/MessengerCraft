@@ -38,7 +38,6 @@ import { OnBoardingSchema } from "@/src/schema";
 import {
   InputOTP,
   InputOTPGroup,
-  InputOTPSeparator,
   InputOTPSlot,
 } from "@/src/components/ui/input-otp";
 import { ImageUpload } from "@/src/components/my ui/on-boarding/image-uploader";
@@ -53,6 +52,8 @@ import {
   slideRight,
 } from "@/src/components/my ui/on-boarding/framer-animation";
 import Image from "next/image";
+
+// Todo: Fix all errors like the continue buttons isnt going to other row and add countrys
 
 const countries = [
   { name: "United States", code: "US", phoneCode: "+1", flag: "🇺🇸" },
@@ -383,6 +384,8 @@ export const OnBoardingForm = () => {
                                   onChange={field.onChange}
                                   disabled={isPending}
                                   className="mx-auto max-w-[200px]"
+                                  rounded={false}
+                                  aspectRatio={1}
                                 />
                               </FormControl>
                               <FormMessage />
@@ -534,7 +537,7 @@ export const OnBoardingForm = () => {
                         variants={staggerItem()}
                       >
                         <div className="flex items-center space-x-2">
-                          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-violet-600/20 text-violet-600">
+                          <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-violet-600/20 text-violet-600">
                             {formData.profileImage ? (
                               <div className="relative h-8 w-8 overflow-hidden rounded-full">
                                 <Image
