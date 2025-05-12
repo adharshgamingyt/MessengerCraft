@@ -25,7 +25,10 @@ import NextAuth, { type DefaultSession } from "next-auth";
 
 /** Making extending easy to understand */
 export type ExtendedSession = DefaultSession["user"] & {
+  name: string | null;
   username: string | null;
+  image: string | URL | null;
+  emailVerified: Data | null;
 };
 
 /** Extending Session */
@@ -41,7 +44,10 @@ import { JWT } from "next-auth/jwt";
 declare module "next-auth/jwt" {
   /** Returned by the `jwt` callback and `auth`, when using JWT sessions */
   interface JWT {
+    name: string | null;
     username: string | null;
+    image: string | URL | null;
+    emailVerified: Data | null;
   }
 }
 

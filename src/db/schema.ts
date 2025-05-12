@@ -25,7 +25,7 @@ export const user = pgTable("user", {
   phoneVerified: timestamp("phoneVerified", {
     mode: "date",
   }),
-  country_code: integer("country_code"),
+  country: text("country"),
 
   // Note: any security fields go under
 

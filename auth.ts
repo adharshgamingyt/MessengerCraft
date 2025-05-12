@@ -16,12 +16,17 @@ export const {
   session: { strategy: "jwt" },
   ...authConfig,
   callbacks: {
+    async signIn({ user, account, credentials }) {
+      return true;
+    },
     async session({ token, session }) {
       if (token.sub && session.user) {
         session.user.id = token.sub;
       }
 
+      session.user.name = token.name;
       session.user.username = token.username;
+      session.user.emailVerified = token.emailVerified;
 
       console.log("Session", session);
       return session;
@@ -33,7 +38,9 @@ export const {
 
       if (!existingUser) return token;
 
+      token.name = existingUser.name;
       token.username = existingUser.username;
+      token.emailVerified = existingUser.emailVerified;
 
       console.log("JWT: ", token);
       return token;
