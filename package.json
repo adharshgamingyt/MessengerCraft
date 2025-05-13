@@ -67,7 +67,7 @@
     "eslint-plugin-react": "^7.37.5",
     "hono": "^4.7.9",
     "input-otp": "^1.4.2",
-    "lucide-react": "^0.503.0",
+    "lucide-react": "^0.510.0",
     "motion": "^12.11.0",
     "next": "^15.3.2",
     "next-auth": "^5.0.0-beta.28",
