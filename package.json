@@ -1,6 +1,16 @@
 {
   "name": "messengercraft",
+  "description": "A modern messaging platform with advanced features including AI integration, group planning tools, and end-to-end encryption.",
+  "author": "Adharsh",
   "version": "0.0.1",
+  "license": "AGPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adharshgamingyt/MessengerCraft"
+  },
+  "bugs": {
+    "url": "https://github.com/adharshgamingyt/MessengerCraft/issues"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
