@@ -9,6 +9,8 @@ import type * as z from "zod";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 
+// Check V0 and change the code
+
 import { Button } from "@/src/components/ui/button";
 import { Input } from "@/src/components/ui/input";
 import {
@@ -40,7 +42,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/src/components/ui/input-otp";
-import { ImageUpload } from "@/src/components/my ui/on-boarding/image-uploader";
+import { ImageUpload } from "@/src/components/my ui/on-boarding/sub ui comps/image-uploader";
 
 import {
   fadeIn,

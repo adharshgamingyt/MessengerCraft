@@ -249,7 +249,7 @@ export const ImageUpload = ({
                   Click to upload an image or use a URL
                 </div>
                 <div className="text-xs text-zinc-500">
-                  SVG, PNG, JPG or GIF (max. {maxSize}MB)
+                  SVG, PNG, JPG or WEBP (max. {maxSize}MB)
                 </div>
               </div>
             )}
