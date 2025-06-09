@@ -75,7 +75,7 @@
     "drizzle-typebox": "^0.3.3",
     "embla-carousel-react": "^8.6.0",
     "eslint-plugin-react": "^7.37.5",
-    "hono": "^4.7.10",
+    "hono": "^4.7.11",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.511.0",
     "motion": "^12.14.0",
