@@ -52,3 +52,16 @@ declare module "next-auth/jwt" {
 }
 
 /** Auth Extending ends */
+
+/** On-boarding types starts */
+
+export type CountriesType = [
+  {
+    name: string;
+    code: string;
+    flag: string;
+    dial_code: string | int;
+  },
+];
+
+/** On-boarding types ends */

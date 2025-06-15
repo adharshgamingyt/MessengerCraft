@@ -54,27 +54,18 @@ import {
   slideRight,
 } from "@/src/components/my ui/on-boarding/framer-animation";
 import Image from "next/image";
+import { CountriesType } from "@/src/types/types";
 
 // Todo: Fix all errors like the continue buttons isnt going to other row and add countrys
-
-const countries = [
-  { name: "United States", code: "US", phoneCode: "+1", flag: "🇺🇸" },
-  { name: "United Kingdom", code: "GB", phoneCode: "+44", flag: "🇬🇧" },
-  { name: "Canada", code: "CA", phoneCode: "+1", flag: "🇨🇦" },
-  { name: "Australia", code: "AU", phoneCode: "+61", flag: "🇦🇺" },
-  { name: "Germany", code: "DE", phoneCode: "+49", flag: "🇩🇪" },
-  { name: "France", code: "FR", phoneCode: "+33", flag: "🇫🇷" },
-  { name: "Japan", code: "JP", phoneCode: "+81", flag: "🇯🇵" },
-  { name: "China", code: "CN", phoneCode: "+86", flag: "🇨🇳" },
-  { name: "India", code: "IN", phoneCode: "+91", flag: "🇮🇳" },
-  { name: "Brazil", code: "BR", phoneCode: "+55", flag: "🇧🇷" },
-];
 
 export const OnBoardingForm = () => {
   const [step, setStep] = useState(1);
   const [isPending, startTransition] = useTransition();
   const [verificationOpen, setVerificationOpen] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState(countries[0]);
+  const [countries, setCountries] = useState<CountriesType>([]);
+  const [selectedCountry, setSelectedCountry] = useState<
+    CountriesType[number] | null
+  >(null);
   const [formData, setFormData] = useState({
     username: "",
     name: "",
@@ -86,6 +77,20 @@ export const OnBoardingForm = () => {
 
   const [resendCooldown, setResendCooldown] = useState(0);
   const [resendDisabled, setResendDisabled] = useState(false);
+  useEffect(() => {
+    fetch("/countries.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data: CountriesType) => setCountries(data))
+      .catch((err) => {
+        console.error("Failed to load countries:", err);
+        toast.error("Unable to load country list");
+      });
+  }, []);
 
   const userInfoForm = useForm<z.infer<typeof OnBoardingSchema>>({
     resolver: zodResolver(OnBoardingSchema),

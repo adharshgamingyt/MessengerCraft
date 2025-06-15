@@ -165,10 +165,12 @@ export const ImageUpload = ({
 
     try {
       const image = new Image();
+      image.crossOrigin = "anonymous";
       image.src = imageToCrop;
 
-      await new Promise((resolve) => {
+      await new Promise((resolve, reject) => {
         image.onload = resolve;
+        image.onerror = reject;
       });
 
       const canvas = document.createElement("canvas");
@@ -193,7 +195,7 @@ export const ImageUpload = ({
       );
 
       // Convert canvas to data URL
-      const croppedImageUrl = canvas.toDataURL("image/jpeg");
+      const croppedImageUrl = canvas.toDataURL("image/jpeg", 0.9);
 
       if (onChange) {
         onChange(croppedImageUrl);
@@ -205,6 +207,12 @@ export const ImageUpload = ({
       setZoom(1);
     } catch (e) {
       console.error("Error creating cropped image:", e);
+      // Provide fallback for URL images that might have CORS issues
+      if (imageToCrop.startsWith("http") && onChange) {
+        onChange(imageToCrop);
+        setCropDialogOpen(false);
+        setImageToCrop(null);
+      }
     }
   };
   return (
@@ -230,6 +238,11 @@ export const ImageUpload = ({
                   alt="Uploaded image"
                   fill
                   className="object-cover"
+                  onError={(e) => {
+                    console.error("Error loading image:", e);
+                    // Optionally set a fallback image
+                    // e.currentTarget.src = "/placeholder.svg";
+                  }}
                 />
                 <Button
                   type="button"
@@ -261,8 +274,12 @@ export const ImageUpload = ({
           </DialogHeader>
           <Tabs defaultValue="upload">
             <TabsList className="grid w-full grid-cols-2 bg-zinc-900">
-              <TabsTrigger value="upload">Upload</TabsTrigger>
-              <TabsTrigger value="url">URL</TabsTrigger>
+              <TabsTrigger value="upload" className="text-neutral-950">
+                Upload
+              </TabsTrigger>
+              <TabsTrigger value="url" className="text-neutral-950">
+                URL
+              </TabsTrigger>
             </TabsList>
             <TabsContent value="upload" className="mt-4">
               <div
