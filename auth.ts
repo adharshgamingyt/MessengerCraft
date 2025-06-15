@@ -28,7 +28,7 @@ export const {
       session.user.username = token.username;
       session.user.emailVerified = token.emailVerified;
 
-      console.log("Session", session);
+      // console.log("Session", session);
       return session;
     },
     async jwt({ token }) {
@@ -42,7 +42,7 @@ export const {
       token.username = existingUser.username;
       token.emailVerified = existingUser.emailVerified;
 
-      console.log("JWT: ", token);
+      // console.log("JWT: ", token);
       return token;
     },
   },

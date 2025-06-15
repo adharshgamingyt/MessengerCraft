@@ -35,6 +35,23 @@ export const RegisterSchema = z
     path: ["confirmPassword"],
   });
 
+export const UserInfoSchema = z.object({
+  username: z
+    .string()
+    .min(3, "Username must be at least 3 characters")
+    .max(32, "Username must be at most 32 characters")
+    .regex(
+      /^[a-zA-Z0-9_]+$/,
+      "Username can only contain letters, numbers, and underscores",
+    ),
+  name: z
+    .string()
+    .min(3, "Name must be at least 3 characters")
+    .max(50, "Name must be less than 50 characters"),
+  country: z.string().min(2, "Please select your country"),
+  profileImage: z.string().optional(),
+});
+
 export const OnBoardingSchema = z.object({
   username: z
     .string()

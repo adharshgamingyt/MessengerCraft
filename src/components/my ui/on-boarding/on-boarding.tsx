@@ -55,6 +55,8 @@ import {
 } from "@/src/components/my ui/on-boarding/framer-animation";
 import Image from "next/image";
 import { CountriesType } from "@/src/types/types";
+import { country_list } from "./sub ui comps/country";
+import { UserInfoStep } from "./sub ui comps/user-info";
 
 // Todo: Fix all errors like the continue buttons isnt going to other row and add countrys
 
@@ -62,10 +64,6 @@ export const OnBoardingForm = () => {
   const [step, setStep] = useState(1);
   const [isPending, startTransition] = useTransition();
   const [verificationOpen, setVerificationOpen] = useState(false);
-  const [countries, setCountries] = useState<CountriesType>([]);
-  const [selectedCountry, setSelectedCountry] = useState<
-    CountriesType[number] | null
-  >(null);
   const [formData, setFormData] = useState({
     username: "",
     name: "",
@@ -75,32 +73,17 @@ export const OnBoardingForm = () => {
     profileImage: "",
   });
 
-  const [resendCooldown, setResendCooldown] = useState(0);
-  const [resendDisabled, setResendDisabled] = useState(false);
+  const [countries, setCountries] = useState<CountriesType>([]);
+  const [selectedCountry, setSelectedCountry] = useState<
+    CountriesType[number] | null
+  >(null);
+
   useEffect(() => {
-    fetch("/countries.json")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data: CountriesType) => setCountries(data))
-      .catch((err) => {
-        console.error("Failed to load countries:", err);
-        toast.error("Unable to load country list");
-      });
+    setCountries(country_list);
   }, []);
 
-  const userInfoForm = useForm<z.infer<typeof OnBoardingSchema>>({
-    resolver: zodResolver(OnBoardingSchema),
-    defaultValues: {
-      username: formData.username,
-      name: formData.name,
-      country: formData.country,
-      profileImage: formData.profileImage,
-    },
-  });
+  const [resendCooldown, setResendCooldown] = useState(0);
+  const [resendDisabled, setResendDisabled] = useState(false);
 
   const phoneForm = useForm<z.infer<typeof OnBoardingSchema>>({
     resolver: zodResolver(OnBoardingSchema),
@@ -118,11 +101,6 @@ export const OnBoardingForm = () => {
 
   const onSubmitUserInfo = (data: z.infer<typeof OnBoardingSchema>) => {
     startTransition(() => {
-      const country = countries.find((c) => c.code === data.country);
-      if (country) {
-        setSelectedCountry(country);
-      }
-
       setFormData((prev) => ({
         ...prev,
         username: data.username || "",
@@ -130,6 +108,10 @@ export const OnBoardingForm = () => {
         country: data.country || "US",
         profileImage: data.profileImage || "",
       }));
+
+      setSelectedCountry(
+        countries.find((c) => c.code === data.country) || "US",
+      );
 
       setStep(2);
     });
@@ -148,7 +130,7 @@ export const OnBoardingForm = () => {
       setResendDisabled(true);
 
       toast("Verification code sent", {
-        description: `We&apos;ve sent a code to ${selectedCountry.phoneCode} ${data.phoneNumber}`,
+        description: `We&apos;ve sent a code to ${selectedCountry?.dial_code} ${data.phoneNumber}`,
       });
     });
   };
@@ -177,7 +159,7 @@ export const OnBoardingForm = () => {
     setResendDisabled(true);
 
     toast("Verification Code resent successfully", {
-      description: `A new verification code has been sent to ${selectedCountry.phoneCode} ${formData.phoneNumber}`,
+      description: `A new verification code has been sent to ${selectedCountry?.dial_code} ${formData.phoneNumber}`,
     });
   };
 
@@ -205,11 +187,15 @@ export const OnBoardingForm = () => {
           <div className="absolute inset-0 z-0 bg-gradient-to-br from-violet-600 via-purple-900 to-black opacity-90"></div>
           <motion.div
             className="z-10 px-12 text-center"
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn()}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <motion.div variants={slideUp()}>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               <h1 className="mb-6 text-5xl font-extrabold tracking-tight text-white">
                 MessengerCraft
               </h1>
@@ -221,7 +207,9 @@ export const OnBoardingForm = () => {
             {/* Animated messaging illustration */}
             <motion.div
               className="my-12 flex justify-center"
-              variants={scaleUp()}
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
             >
               <div className="relative h-40 w-40">
                 <motion.div
@@ -232,7 +220,7 @@ export const OnBoardingForm = () => {
                   }}
                   transition={{
                     duration: 5,
-                    repeat: Number.POSITIVE_INFINITY,
+                    repeat: Infinity,
                     repeatType: "reverse",
                   }}
                 >
@@ -246,7 +234,7 @@ export const OnBoardingForm = () => {
                   }}
                   transition={{
                     duration: 4,
-                    repeat: Number.POSITIVE_INFINITY,
+                    repeat: Infinity,
                     repeatType: "reverse",
                     delay: 0.5,
                   }}
@@ -259,22 +247,24 @@ export const OnBoardingForm = () => {
             {/* Step indicator */}
             <motion.div
               className="mt-8 flex justify-center space-x-2"
-              variants={staggerChildren()}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
             >
               <motion.div
                 className={`h-2 w-12 rounded-full ${step >= 1 ? "bg-white" : "bg-white/30"}`}
-                variants={staggerItem()}
-                animate={step === 1 ? pulse() : {}}
+                animate={step === 1 ? { scale: [1, 1.1, 1] } : {}}
+                transition={step === 1 ? { duration: 1, repeat: Infinity } : {}}
               ></motion.div>
               <motion.div
                 className={`h-2 w-12 rounded-full ${step >= 2 ? "bg-white" : "bg-white/30"}`}
-                variants={staggerItem()}
-                animate={step === 2 ? pulse() : {}}
+                animate={step === 2 ? { scale: [1, 1.1, 1] } : {}}
+                transition={step === 2 ? { duration: 1, repeat: Infinity } : {}}
               ></motion.div>
               <motion.div
                 className={`h-2 w-12 rounded-full ${step >= 3 ? "bg-white" : "bg-white/30"}`}
-                variants={staggerItem()}
-                animate={step === 3 ? pulse() : {}}
+                animate={step === 3 ? { scale: [1, 1.1, 1] } : {}}
+                transition={step === 3 ? { duration: 1, repeat: Infinity } : {}}
               ></motion.div>
             </motion.div>
           </motion.div>
@@ -288,7 +278,7 @@ export const OnBoardingForm = () => {
             }}
             transition={{
               duration: 15,
-              repeat: Number.POSITIVE_INFINITY,
+              repeat: Infinity,
               repeatType: "reverse",
             }}
           ></motion.div>
@@ -301,7 +291,7 @@ export const OnBoardingForm = () => {
             }}
             transition={{
               duration: 12,
-              repeat: Number.POSITIVE_INFINITY,
+              repeat: Infinity,
               repeatType: "reverse",
               delay: 2,
             }}
@@ -313,11 +303,16 @@ export const OnBoardingForm = () => {
       <div className="flex w-full flex-col justify-center bg-zinc-950 px-4 py-12 lg:w-1/2 lg:px-20">
         <motion.div
           className="mx-auto w-full max-w-md"
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn()}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          <motion.div className="mb-8 text-center" variants={slideUp()}>
+          <motion.div
+            className="mb-8 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <h1 className="text-4xl font-extrabold tracking-tight text-white">
               MessengerCraft
             </h1>
@@ -329,19 +324,27 @@ export const OnBoardingForm = () => {
             <div className="mt-6 flex justify-center space-x-2">
               <motion.div
                 className={`h-2 w-12 rounded-full ${step >= 1 ? "bg-violet-600" : "bg-zinc-700"}`}
-                animate={step === 1 ? pulse() : {}}
+                animate={step === 1 ? { scale: [1, 1.1, 1] } : {}}
+                transition={step === 1 ? { duration: 1, repeat: Infinity } : {}}
               ></motion.div>
               <motion.div
                 className={`h-2 w-12 rounded-full ${step >= 2 ? "bg-violet-600" : "bg-zinc-700"}`}
-                animate={step === 2 ? pulse() : {}}
+                animate={step === 2 ? { scale: [1, 1.1, 1] } : {}}
+                transition={step === 2 ? { duration: 1, repeat: Infinity } : {}}
               ></motion.div>
               <motion.div
                 className={`h-2 w-12 rounded-full ${step >= 3 ? "bg-violet-600" : "bg-zinc-700"}`}
-                animate={step === 3 ? pulse() : {}}
+                animate={step === 3 ? { scale: [1, 1.1, 1] } : {}}
+                transition={step === 3 ? { duration: 1, repeat: Infinity } : {}}
               ></motion.div>
             </div>
 
-            <motion.div className="mt-4 text-center" variants={slideUp()}>
+            <motion.div
+              className="mt-4 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               <h2 className="text-2xl font-bold text-white">
                 {step === 1 && "Create your profile"}
                 {step === 2 && "Secure your account"}
@@ -362,162 +365,15 @@ export const OnBoardingForm = () => {
             {step === 1 && (
               <motion.div
                 key="step1"
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                variants={slideRight()}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
               >
-                <Form {...userInfoForm}>
-                  <form
-                    className="space-y-6"
-                    onSubmit={userInfoForm.handleSubmit(onSubmitUserInfo)}
-                  >
-                    <motion.div
-                      className="space-y-4"
-                      variants={staggerChildren()}
-                    >
-                      <motion.div variants={staggerItem()}>
-                        <FormField
-                          control={userInfoForm.control}
-                          name="profileImage"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="text-sm font-medium text-zinc-200">
-                                Profile Image
-                              </FormLabel>
-                              <FormControl>
-                                <ImageUpload
-                                  value={field.value}
-                                  onChange={field.onChange}
-                                  disabled={isPending}
-                                  className="mx-auto max-w-[200px]"
-                                  rounded={false}
-                                  aspectRatio={1}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </motion.div>
-
-                      <motion.div variants={staggerItem()}>
-                        <FormField
-                          control={userInfoForm.control}
-                          name="username"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="text-sm font-medium text-zinc-200">
-                                Username
-                              </FormLabel>
-                              <FormControl>
-                                <div className="flex">
-                                  <div className="flex items-center justify-center rounded-l-md border border-r-0 border-zinc-800 bg-zinc-900 px-3 text-zinc-400">
-                                    @
-                                  </div>
-                                  <Input
-                                    {...field}
-                                    placeholder="username"
-                                    autoCapitalize="none"
-                                    autoCorrect="off"
-                                    disabled={isPending}
-                                    className="rounded-l-none border-zinc-800 bg-zinc-900 text-white placeholder:text-zinc-400 focus-visible:ring-violet-600"
-                                  />
-                                </div>
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </motion.div>
-
-                      <motion.div variants={staggerItem()}>
-                        <FormField
-                          control={userInfoForm.control}
-                          name="name"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="text-sm font-medium text-zinc-200">
-                                Display Name
-                              </FormLabel>
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  placeholder="How others will see you"
-                                  disabled={isPending}
-                                  className="border-zinc-800 bg-zinc-900 text-white placeholder:text-zinc-400 focus-visible:ring-violet-600"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </motion.div>
-
-                      <motion.div variants={staggerItem()}>
-                        <FormField
-                          control={userInfoForm.control}
-                          name="country"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="text-sm font-medium text-zinc-200">
-                                Country
-                              </FormLabel>
-                              <Select
-                                onValueChange={field.onChange}
-                                defaultValue={field.value}
-                                disabled={isPending}
-                              >
-                                <FormControl>
-                                  <SelectTrigger className="border-zinc-800 bg-zinc-900 text-white focus:ring-violet-600">
-                                    <SelectValue placeholder="Select your country" />
-                                  </SelectTrigger>
-                                </FormControl>
-                                <SelectContent className="max-h-80 bg-zinc-900 text-white">
-                                  {countries.map((country) => (
-                                    <SelectItem
-                                      key={country.code}
-                                      value={country.code}
-                                      className="focus:bg-zinc-800"
-                                    >
-                                      <div className="flex items-center">
-                                        <span className="mr-2">
-                                          {country.flag}
-                                        </span>
-                                        <span>{country.name}</span>
-                                        <span className="ml-2 text-zinc-400">
-                                          {country.phoneCode}
-                                        </span>
-                                      </div>
-                                    </SelectItem>
-                                  ))}
-                                </SelectContent>
-                              </Select>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </motion.div>
-                    </motion.div>
-
-                    <motion.div variants={slideUp()}>
-                      <Button
-                        type="submit"
-                        className="w-full cursor-pointer bg-violet-600 text-white hover:bg-violet-700 disabled:cursor-not-allowed disabled:bg-violet-600/70"
-                        disabled={isPending}
-                      >
-                        {isPending ? (
-                          <>
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            Processing...
-                          </>
-                        ) : (
-                          "Continue to Verification"
-                        )}
-                      </Button>
-                    </motion.div>
-                  </form>
-                </Form>
+                <UserInfoStep
+                  onSubmit={onSubmitUserInfo}
+                  isPending={isPending}
+                />
               </motion.div>
             )}
 
@@ -525,23 +381,22 @@ export const OnBoardingForm = () => {
             {step === 2 && (
               <motion.div
                 key="step2"
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                variants={slideRight()}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
               >
                 <Form {...phoneForm}>
                   <form
                     className="space-y-6"
                     onSubmit={phoneForm.handleSubmit(onSubmitPhone)}
                   >
-                    <motion.div
-                      className="space-y-4"
-                      variants={staggerChildren()}
-                    >
+                    <div className="space-y-4">
                       <motion.div
                         className="flex items-center justify-between rounded-lg border border-zinc-800 bg-zinc-900/50 p-3"
-                        variants={staggerItem()}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: 0.1 }}
                       >
                         <div className="flex items-center space-x-2">
                           <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-violet-600/20 text-violet-600">
@@ -579,7 +434,11 @@ export const OnBoardingForm = () => {
                         </Button>
                       </motion.div>
 
-                      <motion.div variants={staggerItem()}>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: 0.2 }}
+                      >
                         <FormField
                           control={phoneForm.control}
                           name="phoneNumber"
@@ -592,9 +451,9 @@ export const OnBoardingForm = () => {
                                 <div className="flex">
                                   <div className="flex items-center justify-center rounded-l-md border border-r-0 border-zinc-800 bg-zinc-900 px-3 text-zinc-200">
                                     <span className="mr-1">
-                                      {selectedCountry.flag}
+                                      {selectedCountry?.flag}
                                     </span>
-                                    <span>{selectedCountry.phoneCode}</span>
+                                    <span>{selectedCountry?.dial_code}</span>
                                   </div>
                                   <Input
                                     {...field}
@@ -615,9 +474,13 @@ export const OnBoardingForm = () => {
                           )}
                         />
                       </motion.div>
-                    </motion.div>
+                    </div>
 
-                    <motion.div variants={slideUp()}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.3 }}
+                    >
                       <Button
                         type="submit"
                         className="w-full cursor-pointer bg-violet-600 text-white hover:bg-violet-700 disabled:cursor-not-allowed disabled:bg-violet-600/70"
@@ -642,53 +505,60 @@ export const OnBoardingForm = () => {
             {step === 3 && (
               <motion.div
                 key="step3"
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                variants={slideRight()}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
                 className="space-y-6"
               >
                 <motion.div
                   className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-6"
-                  variants={scaleUp()}
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
                 >
                   <motion.div
                     className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-600/20"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                      delay: 0.2,
+                    }}
                   >
                     <Check className="h-8 w-8 text-green-500" />
                   </motion.div>
 
-                  <motion.div
-                    variants={staggerChildren()}
-                    className="text-center"
-                  >
+                  <div className="text-center">
                     <motion.h3
-                      variants={staggerItem()}
                       className="text-xl font-semibold text-white"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.3 }}
                     >
                       Welcome to MessengerCraft!
                     </motion.h3>
                     <motion.p
-                      variants={staggerItem()}
                       className="mt-2 text-zinc-400"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.4 }}
                     >
                       Your secure messaging account is ready. Start connecting
                       with friends and family in a private, encrypted
                       environment.
                     </motion.p>
-                  </motion.div>
+                  </div>
 
-                  <motion.div
-                    className="mt-6 space-y-3"
-                    variants={staggerChildren()}
-                  >
+                  <div className="mt-6 space-y-3">
                     {formData.profileImage && (
                       <motion.div
                         className="mx-auto mb-4 h-20 w-20 overflow-hidden rounded-full border-2 border-violet-600"
-                        variants={staggerItem()}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.4, delay: 0.5 }}
                       >
                         <Image
                           src={formData.profileImage || "/placeholder.svg"}
@@ -699,7 +569,9 @@ export const OnBoardingForm = () => {
                     )}
                     <motion.div
                       className="flex justify-between rounded-md border border-zinc-800 bg-zinc-900 p-3"
-                      variants={staggerItem()}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.4, delay: 0.6 }}
                     >
                       <span className="text-sm text-zinc-400">Username</span>
                       <span className="text-sm font-medium text-white">
@@ -708,26 +580,34 @@ export const OnBoardingForm = () => {
                     </motion.div>
                     <motion.div
                       className="flex justify-between rounded-md border border-zinc-800 bg-zinc-900 p-3"
-                      variants={staggerItem()}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.4, delay: 0.7 }}
                     >
                       <span className="text-sm text-zinc-400">Phone</span>
                       <span className="text-sm font-medium text-white">
-                        {selectedCountry.phoneCode} {formData.phoneNumber}
+                        {selectedCountry?.code} {formData.phoneNumber}
                       </span>
                     </motion.div>
                     <motion.div
                       className="flex justify-between rounded-md border border-zinc-800 bg-zinc-900 p-3"
-                      variants={staggerItem()}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.4, delay: 0.8 }}
                     >
                       <span className="text-sm text-zinc-400">Security</span>
                       <span className="text-sm font-medium text-green-500">
                         Verified ✓
                       </span>
                     </motion.div>
-                  </motion.div>
+                  </div>
                 </motion.div>
 
-                <motion.div variants={slideUp()}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.9 }}
+                >
                   <Button
                     type="button"
                     className="w-full cursor-pointer bg-violet-600 text-white hover:bg-violet-700"
@@ -755,7 +635,7 @@ export const OnBoardingForm = () => {
                   Verify your phone
                 </DialogTitle>
                 <DialogDescription className="text-zinc-400">
-                  Enter the 6-digit code sent to {selectedCountry.phoneCode}{" "}
+                  Enter the 6-digit code sent to {selectedCountry?.dial_code}{" "}
                   {formData.phoneNumber}
                 </DialogDescription>
               </DialogHeader>

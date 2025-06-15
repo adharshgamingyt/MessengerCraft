@@ -55,13 +55,13 @@ declare module "next-auth/jwt" {
 
 /** On-boarding types starts */
 
-export type CountriesType = [
-  {
-    name: string;
-    code: string;
-    flag: string;
-    dial_code: string | int;
-  },
-];
+export type Country = {
+  name: string;
+  code: string;
+  flag: string;
+  dial_code: string | number;
+};
+
+export type CountriesType = Country[];
 
 /** On-boarding types ends */

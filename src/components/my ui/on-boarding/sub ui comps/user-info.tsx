@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import * as z from "zod";
 
 import { Button } from "@/src/components/ui/button";
@@ -24,52 +24,76 @@ import {
   SelectValue,
 } from "@/src/components/ui/select";
 
-import { OnBoardingSchema } from "@/src/schema";
+import { UserInfoSchema } from "@/src/schema";
 import { ImageUpload } from "@/src/components/my ui/on-boarding/sub ui comps/image-uploader";
 import {
   staggerChildren,
   staggerItem,
   slideUp,
 } from "@/src/components/my ui/on-boarding/framer-animation";
+import { CountriesType } from "@/src/types/types";
+import { useEffect, useState } from "react";
+import { country_list } from "./country";
 
 interface UserInfoStepProps {
-  onSubmit: (data: z.infer<typeof OnBoardingSchema>) => void;
+  onSubmit: (data: z.infer<typeof UserInfoSchema>) => void;
   isPending: boolean;
-  defaultValues: {
-    username: string;
-    name: string;
-    country: string;
-    profileImage: string;
-  };
-  countries: Array<{
-    name: string;
-    code: string;
-    phoneCode: string;
-    flag: string;
-  }>;
 }
 
-export const UserInfoStep = ({
-  onSubmit,
-  isPending,
-  defaultValues,
-  countries,
-}: UserInfoStepProps) => {
-  const form = useForm({
-    resolver: zodResolver(OnBoardingSchema),
+export const UserInfoStep = ({ onSubmit, isPending }: UserInfoStepProps) => {
+  const [countries, setCountries] = useState<CountriesType>([]);
+
+  useEffect(() => {
+    setCountries(country_list);
+  }, []);
+
+  const form = useForm<z.infer<typeof UserInfoSchema>>({
+    resolver: zodResolver(UserInfoSchema),
     defaultValues: {
-      username: defaultValues.username,
-      name: defaultValues.name,
-      country: defaultValues.country,
-      profileImage: defaultValues.profileImage,
+      username: "",
+      name: "",
+      country: "US",
+      profileImage: "",
     },
+    mode: "onSubmit",
   });
+
+  const formVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.3 },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.3 },
+    },
+  };
+
+  const handleSubmit = async (data: z.infer<typeof UserInfoSchema>) => {
+    try {
+      await onSubmit(data);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
 
   return (
     <Form {...form}>
-      <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
-        <motion.div className="space-y-4" variants={staggerChildren()}>
-          <motion.div variants={staggerItem()}>
+      <form className="space-y-6" onSubmit={form.handleSubmit(handleSubmit)}>
+        {" "}
+        <motion.div
+          className="space-y-4"
+          initial="hidden"
+          animate="visible"
+          variants={formVariants as any}
+        >
+          <motion.div variants={itemVariants}>
             <FormField
               control={form.control}
               name="profileImage"
@@ -94,7 +118,7 @@ export const UserInfoStep = ({
             />
           </motion.div>
 
-          <motion.div variants={staggerItem()}>
+          <motion.div variants={itemVariants}>
             <FormField
               control={form.control}
               name="username"
@@ -124,7 +148,7 @@ export const UserInfoStep = ({
             />
           </motion.div>
 
-          <motion.div variants={staggerItem()}>
+          <motion.div variants={itemVariants}>
             <FormField
               control={form.control}
               name="name"
@@ -147,7 +171,7 @@ export const UserInfoStep = ({
             />
           </motion.div>
 
-          <motion.div variants={staggerItem()}>
+          <motion.div variants={itemVariants}>
             <FormField
               control={form.control}
               name="country"
@@ -175,9 +199,9 @@ export const UserInfoStep = ({
                         >
                           <div className="flex items-center">
                             <span className="mr-2">{country.flag}</span>
-                            <span>{country.name}</span>
+                            <span>{country.name}</span>{" "}
                             <span className="ml-2 text-zinc-400">
-                              {country.phoneCode}
+                              {country.dial_code}
                             </span>
                           </div>
                         </SelectItem>
@@ -190,7 +214,6 @@ export const UserInfoStep = ({
             />
           </motion.div>
         </motion.div>
-
         <motion.div variants={slideUp()}>
           <Button
             type="submit"

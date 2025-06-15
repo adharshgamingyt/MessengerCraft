@@ -44,25 +44,20 @@ export default auth(async (req) => {
     return;
   }
 
-  if (!isPublicRoute || !isAuthRoute) {
+  if (!isPublicRoute && !isAuthRoute) {
     if (!isLoggedIn) {
       return NextResponse.redirect(new URL("/auth/login", nextUrl));
     }
     const user = await getUserById(req.auth?.user?.id || "");
 
     if (!isOnBoardingRoute) {
-      if (!user?.username || user.username !== undefined) {
+      if (!user?.username) {
         return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
       }
     }
 
     if (isOnBoardingRoute) {
-      if (
-        (user?.name && user.username === null) ||
-        "" ||
-        user?.phone_number === null ||
-        !user?.phone_number
-      ) {
+      if (!user?.name || !user?.username || !user?.phone_number) {
         return;
       } else if ((user && user?.name !== null) || user?.name !== "") {
         return NextResponse.redirect(new URL(DEFAULT_ENTRY_POINT, nextUrl));
@@ -78,12 +73,8 @@ export default auth(async (req) => {
 export const config = {
   matcher: [
     // Skip Next.js internals and all static files, unless found in search params
-    "/((?!_next/static|_next/image|favicon.ico|public|images|health|api/public).*)",
-
-    // Explicitly protect all API routes except public ones
-    "/api/((?!public/).*)",
-
-    // Protect all TRPC routes
-    "/trpc/(.*)",
+    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+    // Always run for API routes
+    "/(api|trpc)(.*)",
   ],
 };
