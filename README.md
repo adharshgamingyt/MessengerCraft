@@ -12,6 +12,7 @@
 [![GitHub package.json version](https://img.shields.io/github/package-json/v/adharshgamingyt/MessengerCraft)](#)
 [![GitHub License](https://img.shields.io/github/license/adharshgamingyt/MessengerCraft)](LICENSE)
 [![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/adharshgamingyt/MessengerCraft/total)](https://github.com/adharshgamingyt/MessengerCraft/releases)
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/adharshgamingyt/MessengerCraft?utm_source=oss&utm_medium=github&utm_campaign=adharshgamingyt%2FMessengerCraft&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
 
 [Demo](https://example.com) | [Documentation](https://example.com/docs) | [Report Bug](https://github.com/adharshgamingyt/messengercraft/issues) | [Request Feature](https://github.com/adharshgamingyt/messengercraft/issues)
 
