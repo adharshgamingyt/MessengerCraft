@@ -107,7 +107,7 @@ Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information
 
 ## 👥 Authors
 
-- [@adharsh](https://github.com/adharshgamingyt) - _**Owner**_
+- [@adharsh](https://github.com/adharshgamingyt) - _**Owner**_ / _**Founder**_
 
 ## 🙏 Acknowledgments
 
