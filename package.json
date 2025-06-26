@@ -32,7 +32,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@auth/core": "^0.39.1",
+    "@auth/core": "^0.40.0",
     "@auth/drizzle-adapter": "^1.10.0",
     "@changesets/cli": "^2.29.4",
     "@hookform/resolvers": "^5.1.1",
