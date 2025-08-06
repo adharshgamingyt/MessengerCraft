@@ -117,7 +117,11 @@
     "@types/react-dom": "^19.1.7",
     "drizzle-kit": "^0.31.4",
     "eslint": "^9.32.0",
+<<<<<<< HEAD
     "eslint-config-next": "^15.4.5",
+=======
+    "eslint-config-next": "^15.4.2",
+>>>>>>> b3c558453755707e0a7e7e9f16f672de5334cbff
     "eslint-plugin-react": "^7.37.5",
     "jest": "^30.0.5",
     "jest-environment-jsdom": "^30.0.5",
