@@ -111,46 +111,9 @@ Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information
 
 ## 🙏 Acknowledgments
 
-MessengerCraft stands on the shoulders of these amazing open-source projects:
+MessengerCraft stands on the shoulders of these amazing open-source projects
 
-### Core Technologies
-
-- [Next.js](https://nextjs.org) - The React framework for production
-- [React 19](https://react.dev) - The library for web and native user interfaces
-- [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
-- [TypeScript](https://www.typescriptlang.org) - Typed JavaScript
-- [Drizzle ORM](https://orm.drizzle.team) - Typesafe SQL queries
-- [Hono.js](https://hono.dev) - Fast and lightweight web framework
-- [Neon Serverless Postgres](https://neon.tech) - Scalable, branching Postgres
-- [Auth.js](https://authjs.dev) - Authentication library (NextAuth.js)
-
-### UI Components & Libraries
-
-- [Radix UI](https://www.radix-ui.com) - Unstyled, accessible components
-- [shadcn/ui](https://ui.shadcn.com) - Beautifully designed components
-- [Lucide](https://lucide.dev) - Beautiful & consistent icons
-- [Recharts](https://recharts.org) - Charting library
-- [Embla Carousel](https://www.embla-carousel.com) - Silky smooth carousels
-- [React Hook Form](https://react-hook-form.com) - Forms with easy validation
-- [Zod](https://zod.dev) - TypeScript-first schema validation
-
-### Utilities & Tools
-
-- [date-fns](https://date-fns.org) - Modern date utilities
-- [clsx](https://github.com/lukeed/clsx) - Tiny classname utility
-- [Tailwind Merge](https://github.com/dcastil/tailwind-merge) - Tailwind class merging
-- [Sonner](https://sonner.emilkowal.ski) - Toast notifications
-- [CMDK](https://cmdk.paco.me) - Command menu component
-- [Vaul](https://vaul.emilkowal.ski) - Modern drawer component
-- [Resend](https://resend.com) - Email API for developers
-
-### Animation & 3D
-
-- [Framer Motion](https://www.framer.com/motion/) - Animation library
-- [React Three Fiber](https://docs.pmnd.rs/react-three-fiber) - 3D rendering
-- [Three.js](https://threejs.org) - 3D library
-
-### Special Thanks
+Special Thanks:
 
 - The entire open-source community for their contributions
 - Our early adopters and beta testers
