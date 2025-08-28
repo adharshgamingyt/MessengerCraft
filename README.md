@@ -63,15 +63,6 @@ bun install
 bun run dev
 ```
 
-## 🔧 Tech Stack
-
-- **Frontend**: React, Redux, TailwindCSS
-- **Backend**: Rust
-- **Database**: Postgres, Drizzle ORM
-- **Real-time Communication**: Drizzle
-- **Authentication**: JWT, Auth.js
-- **Encryption**: MeeC Protocol [Our on Protocol]
-
 ## 📷 Screenshots
 
 <div align="center">
@@ -88,6 +79,9 @@ bun run dev
 - [ ] Self-destructing messages
 - [ ] Expanded language support
 - [ ] Desktop applications
+
+- [ ] Expected alpha release data: 2026 - 27
+- [ ] Expected alpha for mobile: 2027 - 28
 
 ## 🤝 Contributing
 
