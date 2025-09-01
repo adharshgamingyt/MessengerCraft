@@ -1,24 +1,34 @@
 {
   "name": "messengercraft",
+  "version": "0.0.1",
   "private": true,
+  "license": "UNLICENSED",
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "check-types": "turbo run check-types",
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "@workspace/eslint-config": "workspace:*",
+    "@workspace/typescript-config": "workspace:*",
     "prettier": "^3.6.2",
-    "prettier-plugin-tailwindcss": "^0.6.14",
-    "turbo": "^2.5.6"
+    "turbo": "^2.5.6",
+    "typescript": "5.9.2"
   },
+  "packageManager": "bun@1.2.20",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
-  "packageManager": "bun@1.2.19",
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "trustedDependencies": [
+    "@tailwindcss/oxide",
+    "core-js-pure"
+  ],
+  "dependencies": {
+    "@types/minimatch": "^6.0.0"
+  }
 }
