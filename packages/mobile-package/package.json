@@ -7,5 +7,10 @@
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "exports": {
+    "./index.ts": {
+      "import": "./index.ts"
+    }
   }
 }
