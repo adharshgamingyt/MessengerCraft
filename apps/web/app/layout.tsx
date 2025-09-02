@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${fontPoppins.variable} ${fontUbuntu.variable} font-ubuntu antialiased `}
+        className={`${fontPoppins.variable} ${fontUbuntu.variable} font-ubuntu antialiased`}
       >
         <Providers>{children}</Providers>
       </body>
