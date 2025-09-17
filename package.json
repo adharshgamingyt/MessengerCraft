@@ -2,7 +2,7 @@
   "name": "messengercraft",
   "version": "0.0.1",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "AGPL-3.0-only",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",

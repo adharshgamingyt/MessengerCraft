@@ -12,5 +12,5 @@ pub fn run() {
       Ok(())
     })
     .run(tauri::generate_context!())
-    .expect("error while running tauri application");
+    .expect("Failed to start Tauri application - check setup and context configuration");
 }
